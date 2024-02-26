@@ -1,4 +1,4 @@
-import {  randNumber } from '@ngneat/falso'; 
+import { randNumber } from "@ngneat/falso";
 import { sum, getColor } from "../js/module.js";
 
 test("Number", () => {
@@ -6,4 +6,3 @@ test("Number", () => {
   const number2 = randNumber();
   expect(sum(number1)(number2)).toBe(number1 + number2);
 });
-

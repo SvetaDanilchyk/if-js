@@ -1,4 +1,4 @@
-import {getColor} from './module.js';
+import { getColor } from "./module.js";
 
 let user = "John Doe";
 const student = "Sviatlana";
@@ -145,8 +145,6 @@ console.log(`Replacement Zero = ${replacementZero(arrZero)}`);
 
 // lesson-4
 
-
-
 const text1 = document.getElementById("text1");
 const text2 = document.getElementById("text2");
 const text3 = document.getElementById("text3");
@@ -155,15 +153,14 @@ let countColorText1 = 0;
 let countColorText2 = 0;
 let countColorText3 = 0;
 
-text1.addEventListener("click", (event1) => {
-    countColorText1 = getColor(countColorText1)(event1);
-  });
-  
-  text2.addEventListener("click", (event2) => {
-    countColorText2 = getColor(countColorText2)(event2);
-  });
-  
-  text3.addEventListener("click", (event3) => {
-    countColorText3 = getColor(countColorText3)(event3);
-  });
+text1.addEventListener("click", (event) => {
+  countColorText1 = getColor(countColorText1)(event);
+});
 
+text2.addEventListener("click", (event) => {
+  countColorText2 = getColor(countColorText2)(event);
+});
+
+text3.addEventListener("click", (event) => {
+  countColorText3 = getColor(countColorText3)(event);
+});

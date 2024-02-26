@@ -1,14 +1,13 @@
 // lesson-4
 
-
 export function sum(a) {
-    let sum = a;
-  
-    return function (b) {
-      return (sum += b);
-    };
-  }
-  
+  let sum = a;
+
+  return function (b) {
+    return (sum += b);
+  };
+}
+
 /* console.log(`sum(5)(2) = ${sum(5)(2)}`); */
 
 //------------
@@ -27,4 +26,3 @@ export function getColor(countColor) {
     return countColor;
   };
 }
-

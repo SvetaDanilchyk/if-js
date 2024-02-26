@@ -1,5 +1,6 @@
 //const { reverse } = require("lodash");
 
+
 let user = 'John Doe';
 const student = 'Sviatlana';
 
@@ -115,7 +116,6 @@ function maxNumber (...args) {
         if (maxNumber < args[i]) {
             maxNumber = args[i];
         } 
-
     }
 
     return maxNumber;
@@ -135,12 +135,11 @@ function replacementZero(arr) {
         if (arr[i] === 0 || arr[i]%10 === 0) {
             str += arr[i];
             for(let j = 0; j < str.length; j++) {
-                if(str[j] === '0' ){
+                if(str[j] === '0' ) {
                     newStr += "Zero";
                 } else {
                     newStr += str[j];
-                }
-                
+                }                
             }
 
             arr[i] = newStr;
@@ -155,3 +154,57 @@ function replacementZero(arr) {
 }
 const arrZero = [1, 100, 25, 30, 58, 60, 78, 70, 0, 8];
 console.log(`Replacement Zero = ${replacementZero(arrZero)}`);
+
+// lesson-4
+
+function sum(a) {
+
+    let sum = a;
+
+    return function(b) {
+       return sum += b;
+    };
+}
+
+console.log(`sum(5)(2) = ${sum(5)(2)}`);
+
+///////////////////
+
+const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+
+
+const text1 = document.getElementById('text1');
+const text2 = document.getElementById('text2');
+const text3 = document.getElementById('text3');
+
+let countColorText1 = 0;
+let countColorText2 = 0;
+let countColorText3 = 0;
+
+
+function getColor (countColor) {    
+
+    return function(event) {
+        event.target.style.color = colors[countColor];
+        countColor++;
+
+        if(countColor === colors.length ) {
+            countColor = 0;
+        }
+
+        return countColor;
+    }; 
+}
+    
+
+text1.addEventListener('click', (event) => {
+    countColorText1 = getColor(countColorText1)(event);
+});
+
+text2.addEventListener('click', (event) => {
+    countColorText2 = getColor(countColorText2)(event);
+});
+
+text3.addEventListener('click', (event) => {
+    countColorText3 = getColor(countColorText3)(event);
+});

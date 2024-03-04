@@ -1,4 +1,4 @@
-import { sum, getColor } from "./module.js";
+import { sum, getColor, findStr } from "./module.js";
 
 let user = "John Doe";
 const student = "Sviatlana";
@@ -145,7 +145,7 @@ console.log(`Replacement Zero = ${replacementZero(arrZero)}`);
 
 // lesson-4
 
-console.log(`sum(5)(2) = ${sum(5)(2)}`); 
+console.log(`sum(5)(2) = ${sum(5)(2)}`);
 
 const colors = ["magenta", "cyan", "firebrick", "springgreen", "skyblue"];
 
@@ -153,8 +153,36 @@ const text1 = document.getElementById("text1");
 const text2 = document.getElementById("text2");
 const text3 = document.getElementById("text3");
 
-
 text1.addEventListener("click", getColor(colors));
 text2.addEventListener("click", getColor(colors));
 text3.addEventListener("click", getColor(colors));
 
+// lesson - 5
+
+/* Преобразование формата даты:
+в переменной date лежит дата в формате '2020-11-26';
+преобразуйте эту дату в формат '26.11.2020';
+функция должна быть универсальной, т.е. принимать любую дату и приводить ее к поставленному в задании формату. */
+
+const date = "2020-11-26";
+const date1 = "1850-04-4";
+const date2 = "2020-5-05";
+const date3 = "1920-7-7";
+
+const reg = /(?<yers>\d*)\-(?<month>\d*)\-(?<day>\d*)/;
+
+const convertDate = (date) => date.replace(reg, "$<day>.$<month>.$<yers>");
+
+console.log("2020-11-26convertStr === " + convertDate(date));
+console.log("1850-04-4 convertStr === " + convertDate(date1));
+console.log("105-5-05 convertStr === " + convertDate(date2));
+console.log("2020-7-7 convertStr === " + convertDate(date3));
+
+/* Поиск объектов размещения:
+дан массив;
+напишите функцию поиска, которая будет принимать строку;
+по полученной строке найдите все совпадения в массиве;
+верните список строк в формате: страна, город, отель. */
+
+console.log(`Rokoko = ${findStr("Rokoko")}`);
+console.log(`Berlin = ${findStr("Berlin")}`);

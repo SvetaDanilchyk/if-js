@@ -1,5 +1,5 @@
 import { randNumber } from "@ngneat/falso";
-import { sum, getColor } from "../js/module.js";
+import { sum, getColor, findStr } from "../js/module.js";
 
 test("Sum number", () => {
   const number1 = randNumber();
@@ -8,8 +8,12 @@ test("Sum number", () => {
 });
 
 /* test("Сolor change", () => {
-  const colors = ['red', 'orange','green'];  
-  expect(document.getElementById("text1").addEventListener("click", getColor(colors))).toBe(2);
+  const colors = ["red", "green", "orange"];
+  expect(getColor(colors)()).toBe(2);
 });
  */
-
+test("find string", () => {
+  const str = "Russia";
+  const arr = ["Russia, Saint Petersburg, Hotel Leopold"];
+  expect(findStr(str)).toStrictEqual(arr);
+});

@@ -74,17 +74,14 @@ const data = [
 
 export function findStr(str) {
   const arr = [];
-  let strNew = "";
 
   for (let i = 0; i < data.length; i++) {
-    if (
-      data[i].country.includes(str) ||
-      data[i].city.includes(str) ||
-      data[i].hotel.includes(str)
-    ) {
+    let strNew = '';
+    const hasStrInHotel = data[i].country.includes(str) || data[i].city.includes(str) || data[i].hotel.includes(str);
+
+    if (hasStrInHotel) {
       strNew += `${data[i].country}, ${data[i].city}, ${data[i].hotel}`;
       arr.push(strNew);
-      strNew = "";
     }
   }
   return arr;

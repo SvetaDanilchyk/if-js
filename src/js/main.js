@@ -169,7 +169,7 @@ const date1 = "1850-04-4";
 const date2 = "2020-5-05";
 const date3 = "1920-7-7";
 
-const reg = /(?<yers>\d*)\-(?<month>\d*)\-(?<day>\d*)/;
+const reg = /(?<yers>\d*)-(?<month>\d*)-(?<day>\d*)/; //const reg = /(?<yers>\d*)\-(?<month>\d*)\-(?<day>\d*)/;
 
 const convertDate = (date) => date.replace(reg, "$<day>.$<month>.$<yers>");
 
@@ -186,3 +186,310 @@ console.log("2020-7-7 convertStr === " + convertDate(date3));
 
 console.log(`Rokoko = ${findStr("Rokoko")}`);
 console.log(`Berlin = ${findStr("Berlin")}`);
+
+/// lesson - 6
+/* создайте функцию palindrome, которая будет возвращать bool значение в зависимости от того, является ли переданное функции слово палиндромом или нет;
+теперь уже зная как работать со строками и массивами запишите реализацию этого метода в одну строку.
+ */
+
+const newPalindrome = (str) => str.split("").reverse().join("") === str;
+console.log(`казак = ${newPalindrome("казак")}, дом = ${newPalindrome("дом")}`);
+
+/* Поиск объектов размещения:
+дан массив;
+напишите функцию поиска, которая будет принимать строку;
+по полученной строке найдите все совпадения в массиве по любому из полей;
+верните масcив строк в формате: страна, город, отель;
+зная, как работать с массивами, сократите вашу функцию, избавившись от цикла for. */
+
+const hotels = [
+  {
+    name: "Hotel Leopold",
+    city: "Saint Petersburg",
+    country: "Russia",
+  },
+  {
+    name: "Hotel Leopold",
+    city: "Moscow",
+    country: "Russia",
+  },
+  {
+    name: "Apartment Sunshine",
+    city: "Santa Cruz de Tenerife",
+    country: "Spain",
+  },
+  {
+    name: "Villa Kunerad",
+    city: "Vysokie Tatry",
+    country: "Slowakia",
+  },
+  {
+    name: "Hostel Friendship",
+    city: "Berlin",
+    country: "Germany",
+  },
+  {
+    name: "Radisson Blu Hotel",
+    city: "Kyiv",
+    country: "Ukraine",
+  },
+  {
+    name: "Paradise Hotel",
+    city: "Guadalupe",
+    country: "Mexico",
+  },
+  {
+    name: "Hotel Grindewald",
+    city: "Interlaken",
+    country: "Switzerland",
+  },
+  {
+    name: "The Andaman Resort",
+    city: "Port Dickson",
+    country: "Malaysia",
+  },
+  {
+    name: "Virgin Hotel",
+    city: "Chicago",
+    country: "USA",
+  },
+  {
+    name: "Grand Beach Resort",
+    city: "Dubai",
+    country: "United Arab Emirates",
+  },
+  {
+    name: "Shilla Stay",
+    city: "Seoul",
+    country: "South Korea",
+  },
+  {
+    name: "San Firenze Suites",
+    city: "Florence",
+    country: "Italy",
+  },
+  {
+    name: "The Andaman Resort",
+    city: "Port Dickson",
+    country: "Malaysia",
+  },
+  {
+    name: "Black Penny Villas",
+    city: "BTDC, Nuca Dua",
+    country: "Indonesia",
+  },
+  {
+    name: "Koko Hotel",
+    city: "Tokyo",
+    country: "Japan",
+  },
+  {
+    name: "Ramada Plaza",
+    city: "Istanbul",
+    country: "Turkey",
+  },
+  {
+    name: "Waikiki Resort Hotel",
+    city: "Hawaii",
+    country: "USA",
+  },
+  {
+    name: "Puro Hotel",
+    city: "Krakow",
+    country: "Poland",
+  },
+  {
+    name: "Asma Suites",
+    city: "Santorini",
+    country: "Greece",
+  },
+  {
+    name: "Cityden Apartments",
+    city: "Amsterdam",
+    country: "Netherlands",
+  },
+  {
+    name: "Mandarin Oriental",
+    city: "Miami",
+    country: "USA",
+  },
+  {
+    name: "Concept Terrace Hotel",
+    city: "Rome",
+    country: "Italy",
+  },
+  {
+    name: "Ponta Mar Hotel",
+    city: "Fortaleza",
+    country: "Brazil",
+  },
+  {
+    name: "Four Seasons Hotel",
+    city: "Sydney",
+    country: "Australia",
+  },
+  {
+    name: "Le Meridien",
+    city: "Nice",
+    country: "France",
+  },
+  {
+    name: "Apart Neptun",
+    city: "Gdansk",
+    country: "Poland",
+  },
+  {
+    name: "Lux Isla",
+    city: "Ibiza",
+    country: "Spain",
+  },
+  {
+    name: "Nox Hostel",
+    city: "London",
+    country: "UK",
+  },
+  {
+    name: "Leonardo Vienna",
+    city: "Vienna",
+    country: "Austria",
+  },
+  {
+    name: "Adagio Aparthotel",
+    city: "Edinburgh",
+    country: "UK",
+  },
+  {
+    name: "Steigenberger Hotel",
+    city: "Hamburg",
+    country: "Germany",
+  },
+];
+
+function findString(str) {
+  const newArr = [];
+
+  hotels.forEach((i) => {
+    if (
+      i.name.includes(str) ||
+      i.city.includes(str) ||
+      i.country.includes(str)
+    ) {
+      newArr.push(`${i.name}, ${i.city}, ${i.country}`);
+    }
+  });
+
+  return newArr;
+}
+
+/* function findString(str) { 
+     const newArr = [];
+ 
+    const result = hotels.reduce((i) => i.name.includes(str) || i.city.includes(str) || i.country.includes(str));
+
+    return result; 
+ } */
+
+console.log("Humburg ======= " + findString("Steigenberger"));
+
+/* Сопоставьте страны с городами из массива:
+напишите функцию, которая выберет все уникальные страны и сопоставит с ними города;
+в консоли должен быть выведен примерно такой результат: 
+
+{
+   Australia: ['Sydney'],
+   Germany: ['Berlin', 'Hamburg'],
+   Italy: ['Florence', 'Rome'],
+   USA: ['Chicago', 'Hawaii', 'Miami'],
+   Ukraine: ['Kyiv']
+}
+*/
+
+function findCountryForCity(arr) {
+  const objCountry = {};
+
+  arr.forEach((i) => {
+    const keyA = i.country;
+    const valueA = i.city;
+    let newStrCity = "";
+
+    if (keyA in objCountry) {
+      newStrCity = objCountry[keyA];
+      newStrCity += "," + i.city;
+      objCountry[keyA] = newStrCity.split(",");
+    } else {
+      objCountry[keyA] = valueA.split(",");
+    }
+  });
+
+  return objCountry;
+}
+
+console.log(findCountryForCity(hotels));
+
+/* 
+
+Календарный месяц:
+создайте функцию getCalendarMonth, которая принимает количество дней в месяце, количество дней в неделе и день недели, на который выпадает первый день месяца;
+свободные дни (до первого дня месяца и после последнего дня месяца, пока считаем, что в каждом месяце равное количество дней) заполните днями предыдущего месяца или последующего;
+выбросьте ошибку, если переданный день недели больше, чем количество дней.
+// пример:
+
+const daysInMonth = 30;
+const daysInWeek = 7;
+const dayOfWeek = 4; // в моем примере понедельник равен 0. У вас может отличаться
+const calendarMonth = getCalendarMonth(daysInMonth, daysInWeek, dayOfWeek);
+
+console.log(calendarMonth);
+/* result:
+[
+  [27, 28, 29, 30, 1, 2, 3]
+  [4, 5, 6, 7, 8, 9, 10]
+  [11, 12, 13, 14, 15, 16, 17]
+  [18, 19, 20, 21, 22, 23, 24]
+  [25, 26, 27, 28, 29, 30, 1]
+]
+*/
+
+function getCalendarMonth(daysInMonth, daysInWeek, startWeek) {
+  const month = [];
+  const week = [];
+  let newStartWeek = startWeek - 1;
+  const newMonth = startWeek;
+  let countMonth = startWeek;
+
+  const collWeek = Math.ceil(daysInMonth / daysInWeek);
+
+  for (let i = 0; i < collWeek; i++) {
+    let countNewMonth = 1;
+    if (startWeek !== 1 && startWeek !== 0) {
+      let newDaysInMonth = daysInMonth;
+
+      for (let j = daysInWeek - 1; j >= 0; j--) {
+        if (newStartWeek === 0) {
+          week[j] = newDaysInMonth;
+          newDaysInMonth--;
+        } else {
+          week[j] = newStartWeek;
+          newStartWeek--;
+        }
+
+        startWeek = newStartWeek;
+      }
+      month[i] = [...week];
+    } else if (startWeek === 0) {
+      for (let j = 0; j < daysInWeek; j++) {
+        if (countMonth === 31) {
+          week[j] = countNewMonth;
+          countNewMonth++;
+        } else {
+          week[j] = countMonth;
+          countMonth++;
+        }
+      }
+      month[i] = [...week];
+    }
+  }
+  return month;
+}
+
+console.log(getCalendarMonth(30, 7, 4));

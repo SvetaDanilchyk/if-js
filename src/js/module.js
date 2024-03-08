@@ -76,8 +76,11 @@ export function findStr(str) {
   const arr = [];
 
   for (let i = 0; i < data.length; i++) {
-    let strNew = '';
-    const hasStrInHotel = data[i].country.includes(str) || data[i].city.includes(str) || data[i].hotel.includes(str);
+    let strNew = "";
+    const hasStrInHotel =
+      data[i].country.includes(str) ||
+      data[i].city.includes(str) ||
+      data[i].hotel.includes(str);
 
     if (hasStrInHotel) {
       strNew += `${data[i].country}, ${data[i].city}, ${data[i].hotel}`;

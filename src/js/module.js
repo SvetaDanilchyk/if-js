@@ -89,4 +89,88 @@ export function findStr(str) {
   }
   return arr;
 }
+/* lesson - 6 */
 
+  
+  export function findString(hotels, str) {
+    const newArr = [];
+  
+    hotels.forEach((i) => {
+      if (
+        i.name.includes(str) ||
+        i.city.includes(str) ||
+        i.country.includes(str)
+      ) {
+        newArr.push(`${i.name}, ${i.city}, ${i.country}`);
+      }
+    });
+  
+    return newArr;
+  }
+
+export function findCountryForCity(arr) {
+    const objCountry = {};
+  
+    arr.forEach((i) => {
+      const keyA = i.country;
+      const valueA = i.city;
+      let newStrCity = "";
+  
+      if (keyA in objCountry) {
+        newStrCity = objCountry[keyA];
+        newStrCity += "," + i.city;
+        objCountry[keyA] = newStrCity.split(",");
+      } else {
+        objCountry[keyA] = valueA.split(",");
+      }
+    });
+  
+    return objCountry;
+  }
+
+export function getCalendarMonth(daysInMonth, daysInWeek, startWeek) {
+
+    const month = [];
+    const week = [];
+    let newStartWeek = startWeek-1;
+    let countMonth = startWeek;
+
+    const collWeek = Math.ceil(daysInMonth/daysInWeek);
+
+    for(let i = 0; i < collWeek; i++ ) {
+       
+        let countNewMonth = 1;
+        if(startWeek !== 1 && startWeek !== 0){             
+            let newDaysInMonth = daysInMonth;
+
+            for(let j = daysInWeek-1; j >= 0; j--) {
+                
+                if(newStartWeek === 0) {
+                    week[j] = newDaysInMonth;
+                    newDaysInMonth--;
+                } else {
+                    week[j] = newStartWeek;
+                    newStartWeek--; 
+                }   
+                
+                startWeek = newStartWeek;
+            }  
+            month[i] = [...week];
+
+        }  else if(startWeek === 0) {
+            for(let j = 0; j < daysInWeek; j++) {   
+
+                if(countMonth === 31 ) {
+                    week[j] = countNewMonth;
+                    countNewMonth++;
+                } else {
+                    week[j] = countMonth;
+                    countMonth++;
+                }
+            }
+            month[i] = [...week];
+        }
+       
+    }
+    return month;
+}

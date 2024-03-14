@@ -1,4 +1,5 @@
-import { sum, getColor, findStr, findString , findCountryForCity, getCalendarMonth } from "./module.js";
+import { sum, getColor, findStr, getString , getCountry, getCalendarMonth } from "./module.js";
+import {hotels} from "./constants/hotels.js";
 
 let user = "John Doe";
 const student = "Sviatlana";
@@ -188,163 +189,7 @@ console.log(`Rokoko = ${findStr("Rokoko")}`);
 console.log(`Berlin = ${findStr("Berlin")}`);
 
 /// lesson - 6
-const hotels = [
-        {
-      name: "Hotel Leopold",
-      city: "Moscow",
-      country: "Russia",
-    },
-    {
-      name: "Apartment Sunshine",
-      city: "Santa Cruz de Tenerife",
-      country: "Spain",
-    },
-    {
-      name: "Villa Kunerad",
-      city: "Vysokie Tatry",
-      country: "Slowakia",
-    },
-    {
-      name: "Hostel Friendship",
-      city: "Berlin",
-      country: "Germany",
-    },
-    {
-      name: "Radisson Blu Hotel",
-      city: "Kyiv",
-      country: "Ukraine",
-    },
-    {
-      name: "Paradise Hotel",
-      city: "Guadalupe",
-      country: "Mexico",
-    },
-    {
-      name: "Hotel Grindewald",
-      city: "Interlaken",
-      country: "Switzerland",
-    },
-    {
-      name: "The Andaman Resort",
-      city: "Port Dickson",
-      country: "Malaysia",
-    },
-    {
-      name: "Virgin Hotel",
-      city: "Chicago",
-      country: "USA",
-    },
-    {
-      name: "Grand Beach Resort",
-      city: "Dubai",
-      country: "United Arab Emirates",
-    },
-    {
-      name: "Shilla Stay",
-      city: "Seoul",
-      country: "South Korea",
-    },
-    {
-      name: "San Firenze Suites",
-      city: "Florence",
-      country: "Italy",
-    },
-    {
-      name: "The Andaman Resort",
-      city: "Port Dickson",
-      country: "Malaysia",
-    },
-    {
-      name: "Black Penny Villas",
-      city: "BTDC, Nuca Dua",
-      country: "Indonesia",
-    },
-    {
-      name: "Koko Hotel",
-      city: "Tokyo",
-      country: "Japan",
-    },
-    {
-      name: "Ramada Plaza",
-      city: "Istanbul",
-      country: "Turkey",
-    },
-    {
-      name: "Waikiki Resort Hotel",
-      city: "Hawaii",
-      country: "USA",
-    },
-    {
-      name: "Puro Hotel",
-      city: "Krakow",
-      country: "Poland",
-    },
-    {
-      name: "Asma Suites",
-      city: "Santorini",
-      country: "Greece",
-    },
-    {
-      name: "Cityden Apartments",
-      city: "Amsterdam",
-      country: "Netherlands",
-    },
-    {
-      name: "Mandarin Oriental",
-      city: "Miami",
-      country: "USA",
-    },
-    {
-      name: "Concept Terrace Hotel",
-      city: "Rome",
-      country: "Italy",
-    },
-    {
-      name: "Ponta Mar Hotel",
-      city: "Fortaleza",
-      country: "Brazil",
-    },
-    {
-      name: "Four Seasons Hotel",
-      city: "Sydney",
-      country: "Australia",
-    },
-    {
-      name: "Le Meridien",
-      city: "Nice",
-      country: "France",
-    },
-    {
-      name: "Apart Neptun",
-      city: "Gdansk",
-      country: "Poland",
-    },
-    {
-      name: "Lux Isla",
-      city: "Ibiza",
-      country: "Spain",
-    },
-    {
-      name: "Nox Hostel",
-      city: "London",
-      country: "UK",
-    },
-    {
-      name: "Leonardo Vienna",
-      city: "Vienna",
-      country: "Austria",
-    },
-    {
-      name: "Adagio Aparthotel",
-      city: "Edinburgh",
-      country: "UK",
-    },
-    {
-      name: "Steigenberger Hotel",
-      city: "Hamburg",
-      country: "Germany",
-    },
-  ];
+
 /* создайте функцию palindrome, которая будет возвращать bool значение в зависимости от того, является ли переданное функции слово палиндромом или нет;
 теперь уже зная как работать со строками и массивами запишите реализацию этого метода в одну строку.
  */
@@ -359,8 +204,7 @@ console.log(`казак = ${newPalindrome("казак")}, дом = ${newPalindro
 верните масcив строк в формате: страна, город, отель;
 зная, как работать с массивами, сократите вашу функцию, избавившись от цикла for. */
 
-
-console.log(`Russia ======= ${findString(hotels,"Russia")}`);
+console.log(`Russia => ${getString("Russia")}`);
 
 /* Сопоставьте страны с городами из массива:
 напишите функцию, которая выберет все уникальные страны и сопоставит с ними города;
@@ -374,9 +218,7 @@ console.log(`Russia ======= ${findString(hotels,"Russia")}`);
    Ukraine: ['Kyiv']
 }
 */
-
-console.log(findCountryForCity(hotels));
-
+console.log(getCountry(hotels));
 /* 
 
 Календарный месяц:
@@ -400,6 +242,5 @@ console.log(calendarMonth);
   [25, 26, 27, 28, 29, 30, 1]
 ]
 */
-
 
 console.log(getCalendarMonth(30, 7, 4));

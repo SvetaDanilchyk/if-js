@@ -1,5 +1,6 @@
-// lesson-4
+import {hotels} from "./constants/hotels.js";
 
+// lesson-4
 export function sum(a) {
   let sum = a;
 
@@ -91,42 +92,27 @@ export function findStr(str) {
 }
 /* lesson - 6 */
 
-  
-  export function findString(hotels, str) {
-    const newArr = [];
-  
-    hotels.forEach((i) => {
-      if (
-        i.name.includes(str) ||
-        i.city.includes(str) ||
-        i.country.includes(str)
-      ) {
-        newArr.push(`${i.name}, ${i.city}, ${i.country}`);
-      }
-    });
-  
-    return newArr;
-  }
+export function getString(str) {
+  const result = hotels.filter(i => i.name.includes(str) || i.city.includes(str) || i.country.includes(str));
+  let resultStr = '';  
+  result.forEach(i => resultStr +=  `${i.name}, ${i.city}, ${i.country}  `);
+  return resultStr;
+}
 
-export function findCountryForCity(arr) {
-    const objCountry = {};
-  
-    arr.forEach((i) => {
-      const keyA = i.country;
-      const valueA = i.city;
-      let newStrCity = "";
-  
-      if (keyA in objCountry) {
-        newStrCity = objCountry[keyA];
-        newStrCity += "," + i.city;
-        objCountry[keyA] = newStrCity.split(",");
-      } else {
-        objCountry[keyA] = valueA.split(",");
-      }
-    });
-  
-    return objCountry;
-  }
+export function getCountry(arr) {
+  const count = [];
+
+  const resultCountry = arr.reduce((count, item) => {
+    if (Object.keys(count).includes(item.country)) {
+      count[item.country].push(item.city);
+      return count;
+    }
+     count[item.country] = [item.city];
+     return count;
+  }, count);
+
+  return resultCountry;
+}
 
 export function getCalendarMonth(daysInMonth, daysInWeek, startWeek) {
 

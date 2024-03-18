@@ -1,4 +1,5 @@
-import { sum, getColor, findStr } from "./module.js";
+import { sum, getColor, findStr, getString , getCountry, getCalendarMonth } from "./module.js";
+import {hotels} from "./constants/hotels.js";
 
 let user = "John Doe";
 const student = "Sviatlana";
@@ -169,7 +170,7 @@ const date1 = "1850-04-4";
 const date2 = "2020-5-05";
 const date3 = "1920-7-7";
 
-const reg = /(?<yers>\d*)\-(?<month>\d*)\-(?<day>\d*)/;
+const reg = /(?<yers>\d*)-(?<month>\d*)-(?<day>\d*)/; //const reg = /(?<yers>\d*)\-(?<month>\d*)\-(?<day>\d*)/;
 
 const convertDate = (date) => date.replace(reg, "$<day>.$<month>.$<yers>");
 
@@ -186,3 +187,60 @@ console.log("2020-7-7 convertStr === " + convertDate(date3));
 
 console.log(`Rokoko = ${findStr("Rokoko")}`);
 console.log(`Berlin = ${findStr("Berlin")}`);
+
+/// lesson - 6
+
+/* создайте функцию palindrome, которая будет возвращать bool значение в зависимости от того, является ли переданное функции слово палиндромом или нет;
+теперь уже зная как работать со строками и массивами запишите реализацию этого метода в одну строку.
+ */
+
+const newPalindrome = (str) => str.split("").reverse().join("") === str;
+console.log(`казак = ${newPalindrome("казак")}, дом = ${newPalindrome("дом")}`);
+
+/* Поиск объектов размещения:
+дан массив;
+напишите функцию поиска, которая будет принимать строку;
+по полученной строке найдите все совпадения в массиве по любому из полей;
+верните масcив строк в формате: страна, город, отель;
+зная, как работать с массивами, сократите вашу функцию, избавившись от цикла for. */
+
+console.log(`Russia => ${getString("Russia")}`);
+
+/* Сопоставьте страны с городами из массива:
+напишите функцию, которая выберет все уникальные страны и сопоставит с ними города;
+в консоли должен быть выведен примерно такой результат: 
+
+{
+   Australia: ['Sydney'],
+   Germany: ['Berlin', 'Hamburg'],
+   Italy: ['Florence', 'Rome'],
+   USA: ['Chicago', 'Hawaii', 'Miami'],
+   Ukraine: ['Kyiv']
+}
+*/
+console.log(getCountry(hotels));
+/* 
+
+Календарный месяц:
+создайте функцию getCalendarMonth, которая принимает количество дней в месяце, количество дней в неделе и день недели, на который выпадает первый день месяца;
+свободные дни (до первого дня месяца и после последнего дня месяца, пока считаем, что в каждом месяце равное количество дней) заполните днями предыдущего месяца или последующего;
+выбросьте ошибку, если переданный день недели больше, чем количество дней.
+// пример:
+
+const daysInMonth = 30;
+const daysInWeek = 7;
+const dayOfWeek = 4; // в моем примере понедельник равен 0. У вас может отличаться
+const calendarMonth = getCalendarMonth(daysInMonth, daysInWeek, dayOfWeek);
+
+console.log(calendarMonth);
+/* result:
+[
+  [27, 28, 29, 30, 1, 2, 3]
+  [4, 5, 6, 7, 8, 9, 10]
+  [11, 12, 13, 14, 15, 16, 17]
+  [18, 19, 20, 21, 22, 23, 24]
+  [25, 26, 27, 28, 29, 30, 1]
+]
+*/
+
+console.log(getCalendarMonth(30, 7, 4));

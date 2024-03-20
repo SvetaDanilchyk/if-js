@@ -1,4 +1,5 @@
 import {hotels} from "./constants/hotels.js";
+import {obj1, obj2, obj3} from "./constants/obj.js";
 
 // lesson-4
 export function sum(a) {
@@ -159,4 +160,39 @@ export function getCalendarMonth(daysInMonth, daysInWeek, startWeek) {
        
     }
     return month;
+}
+
+// lesson-7
+/*Напишите функция deepEqual,которая сможет сравнивать 2 объекта с разными уровнями вложенности.*/
+
+export  function DeepEqual(obj1, obj2) {
+  const keysObj1 = Object.keys(obj1);
+  const keysObj2 = Object.keys(obj2);
+
+if(keysObj1.length !== keysObj2.length) return false;
+
+const isOb = keysObj2.filter(i => {  if(!keysObj1.includes(i)) {
+  return false;
+   } else {
+   return true;
+ } 
+});
+
+ if(isOb.length < keysObj1.length) {
+   return false;
+ }
+
+for(const key in obj1) {   
+
+ const val1 = obj1[key];
+ const val2 = obj2[key];
+
+ if( !Object.is(val1, val2) && typeof(val1) === 'object') {
+   
+   if(!DeepEqual(val1, val2)) {
+     return false;
+   }
+ }    
+}     
+  return true;
 }

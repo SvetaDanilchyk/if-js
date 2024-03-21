@@ -115,10 +115,16 @@ export function getCountry(arr) {
   return resultCountry;
 }
 
-export function getCalendarMonth(daysInMonth, daysInWeek, startWeek) {
+export function getCalendarMonth(daysInMonth, daysInWeek, startWeek, checkInDate, checkOutDate) {
+
+    if(startWeek > daysInMonth) {
+      throw "The day is incorrect";
+    }
 
     const month = [];
     const week = [];
+    const flagaCurrentMonth = true;
+    const flagaSelectedDay = true;
     let newStartWeek = startWeek-1;
     let countMonth = startWeek;
 
@@ -133,10 +139,10 @@ export function getCalendarMonth(daysInMonth, daysInWeek, startWeek) {
             for(let j = daysInWeek-1; j >= 0; j--) {
                 
                 if(newStartWeek === 0) {
-                    week[j] = newDaysInMonth;
+                    week[j] = {dayOfMonth: newDaysInMonth, notCurrentMonth: flagaCurrentMonth,selectedDay: flagaSelectedDay};
                     newDaysInMonth--;
                 } else {
-                    week[j] = newStartWeek;
+                    week[j] = {dayOfMonth: newStartWeek, notCurrentMonth: !flagaCurrentMonth, selectedDay: flagaSelectedDay};
                     newStartWeek--; 
                 }   
                 
@@ -148,10 +154,10 @@ export function getCalendarMonth(daysInMonth, daysInWeek, startWeek) {
             for(let j = 0; j < daysInWeek; j++) {   
 
                 if(countMonth === 31 ) {
-                    week[j] = countNewMonth;
+                    week[j] = {dayOfMonth: countNewMonth, notCurrentMonth: flagaCurrentMonth, selectedDay: flagaSelectedDay};
                     countNewMonth++;
                 } else {
-                    week[j] = countMonth;
+                    week[j] = {dayOfMonth: countMonth, notCurrentMonth: !flagaCurrentMonth, selectedDay: flagaSelectedDay};
                     countMonth++;
                 }
             }
@@ -196,3 +202,4 @@ for(const key in obj1) {
 }     
   return true;
 }
+

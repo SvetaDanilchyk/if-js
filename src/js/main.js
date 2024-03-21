@@ -244,12 +244,11 @@ console.log(calendarMonth);
 ]
 */
 
-console.log(getCalendarMonth(30, 7, 4));
+console.log(getCalendarMonth(30, 7, 4, 13, 17));
 
 //lesson-7
 console.log('---------------------------------lesson-7-------------------------------');
 /* Напишите функция deepEqual, которая сможет сравнивать 2 объекта с разными уровнями вложенности. */
-
 console.log(DeepEqual(obj1, obj2));
 console.log(DeepEqual(obj1, obj3));
 console.log(DeepEqual(obj3, obj4));

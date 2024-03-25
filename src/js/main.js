@@ -1,5 +1,13 @@
-import { sum, getColor, findStr, getString , getCountry, getCalendarMonth, DeepEqual } from "./module.js";
-import {hotels} from "./constants/hotels.js";
+import {
+  sum,
+  getColor,
+  findStr,
+  getString,
+  getCountry,
+  getCalendarMonth,
+  deepEqual,
+} from "./module.js";
+import { hotels } from "./constants/hotels.js";
 import { obj1, obj2, obj3, obj4 } from "./constants/obj.js";
 
 let user = "John Doe";
@@ -247,10 +255,14 @@ console.log(calendarMonth);
 console.log(getCalendarMonth(30, 7, 4, 13, 17));
 
 //lesson-7
-console.log('---------------------------------lesson-7-------------------------------');
+console.log(
+  "---------------------------------lesson-7-------------------------------",
+);
 /* Напишите функция deepEqual, которая сможет сравнивать 2 объекта с разными уровнями вложенности. */
-console.log(DeepEqual(obj1, obj2));
-console.log(DeepEqual(obj1, obj3));
-console.log(DeepEqual(obj3, obj4));
+console.log(deepEqual(obj1, obj2));
+console.log(deepEqual(obj1, obj3));
+console.log(deepEqual(obj3, obj4));
 
-console.log('---------------------------------lesson-7-------------------------------');
+console.log(
+  "---------------------------------lesson-7-------------------------------",
+);

@@ -11,13 +11,13 @@ test("Sum number", () => {
 });
 
 test("Сolor change", () => {
-  document.body.innerHTML =  `<p id="text1">Text 1</p>`;
-  
-  const color = ['red','green'];
+  document.body.innerHTML = `<p id="text1">Text 1</p>`;
+
+  const color = ["red", "green"];
   const p1 = document.getElementById("text1");
   p1.addEventListener("click", modulFunction.getColor(color));
   p1.click();
-  expect(p1.style.color).toBe("red"); 
+  expect(p1.style.color).toBe("red");
 });
 
 test("find string", () => {
@@ -32,7 +32,13 @@ test("Get String", () => {
   expect(modulFunction.getString(str)).toStrictEqual(result);
 });
 
-test ("getCalendarMonth", () => {
-  const result = [[26, 27, 28, 29, 30, 1, 2], [3, 4, 5, 6, 7, 8, 9], [10, 11, 12, 13, 14, 15, 16], [17, 18, 19, 20, 21, 22, 23], [24, 25, 26, 27, 28, 29, 30]];
+test("getCalendarMonth", () => {
+  const result = [
+    [26, 27, 28, 29, 30, 1, 2],
+    [3, 4, 5, 6, 7, 8, 9],
+    [10, 11, 12, 13, 14, 15, 16],
+    [17, 18, 19, 20, 21, 22, 23],
+    [24, 25, 26, 27, 28, 29, 30],
+  ];
   expect(modulFunction.getCalendarMonth(30, 7, 3)).toStrictEqual(result);
 });

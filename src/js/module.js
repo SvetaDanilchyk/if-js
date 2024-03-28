@@ -1,4 +1,5 @@
-import {hotels} from "./constants/hotels.js";
+import { hotels } from "./constants/hotels.js";
+import { obj1, obj2, obj3 } from "./constants/obj.js";
 
 // lesson-4
 export function sum(a) {
@@ -93,9 +94,12 @@ export function findStr(str) {
 /* lesson - 6 */
 
 export function getString(str) {
-  const result = hotels.filter(i => i.name.includes(str) || i.city.includes(str) || i.country.includes(str));
-  let resultStr = '';  
-  result.forEach(i => resultStr +=  `${i.name}, ${i.city}, ${i.country}  `);
+  const result = hotels.filter(
+    (i) =>
+      i.name.includes(str) || i.city.includes(str) || i.country.includes(str),
+  );
+  let resultStr = "";
+  result.forEach((i) => (resultStr += `${i.name}, ${i.city}, ${i.country}  `));
   return resultStr;
 }
 
@@ -107,56 +111,102 @@ export function getCountry(arr) {
       count[item.country].push(item.city);
       return count;
     }
-     count[item.country] = [item.city];
-     return count;
+    count[item.country] = [item.city];
+    return count;
   }, count);
 
   return resultCountry;
 }
 
-export function getCalendarMonth(daysInMonth, daysInWeek, startWeek) {
+export function getCalendarMonth(
+  daysInMonth,
+  daysInWeek,
+  startWeek,
+  checkInDate,
+  checkOutDate,
+) {
+  if (startWeek > daysInMonth) {
+    throw "The day is incorrect";
+  }
 
-    const month = [];
-    const week = [];
-    let newStartWeek = startWeek-1;
-    let countMonth = startWeek;
+  const month = [];
+  const week = [];
+  const flagaCurrentMonth = true;
+  const flagaSelectedDay = true;
+  let newStartWeek = startWeek - 1;
+  let countMonth = startWeek;
 
-    const collWeek = Math.ceil(daysInMonth/daysInWeek);
+  const collWeek = Math.ceil(daysInMonth / daysInWeek);
 
-    for(let i = 0; i < collWeek; i++ ) {
-       
-        let countNewMonth = 1;
-        if(startWeek !== 1 && startWeek !== 0){             
-            let newDaysInMonth = daysInMonth;
+  for (let i = 0; i < collWeek; i++) {
+    let countNewMonth = 1;
+    if (startWeek !== 1 && startWeek !== 0) {
+      let newDaysInMonth = daysInMonth;
 
-            for(let j = daysInWeek-1; j >= 0; j--) {
-                
-                if(newStartWeek === 0) {
-                    week[j] = newDaysInMonth;
-                    newDaysInMonth--;
-                } else {
-                    week[j] = newStartWeek;
-                    newStartWeek--; 
-                }   
-                
-                startWeek = newStartWeek;
-            }  
-            month[i] = [...week];
-
-        }  else if(startWeek === 0) {
-            for(let j = 0; j < daysInWeek; j++) {   
-
-                if(countMonth === 31 ) {
-                    week[j] = countNewMonth;
-                    countNewMonth++;
-                } else {
-                    week[j] = countMonth;
-                    countMonth++;
-                }
-            }
-            month[i] = [...week];
+      for (let j = daysInWeek - 1; j >= 0; j--) {
+        if (newStartWeek === 0) {
+          week[j] = {
+            dayOfMonth: newDaysInMonth,
+            notCurrentMonth: flagaCurrentMonth,
+            selectedDay: flagaSelectedDay,
+          };
+          newDaysInMonth--;
+        } else {
+          week[j] = {
+            dayOfMonth: newStartWeek,
+            notCurrentMonth: !flagaCurrentMonth,
+            selectedDay: flagaSelectedDay,
+          };
+          newStartWeek--;
         }
-       
+
+        startWeek = newStartWeek;
+      }
+      month[i] = [...week];
+    } else if (startWeek === 0) {
+      for (let j = 0; j < daysInWeek; j++) {
+        if (countMonth === 31) {
+          week[j] = {
+            dayOfMonth: countNewMonth,
+            notCurrentMonth: flagaCurrentMonth,
+            selectedDay: flagaSelectedDay,
+          };
+          countNewMonth++;
+        } else {
+          week[j] = {
+            dayOfMonth: countMonth,
+            notCurrentMonth: !flagaCurrentMonth,
+            selectedDay: flagaSelectedDay,
+          };
+          countMonth++;
+        }
+      }
+      month[i] = [...week];
     }
-    return month;
+  }
+  return month;
+}
+
+// lesson-7
+/*Напишите функция deepEqual,которая сможет сравнивать 2 объекта с разными уровнями вложенности.*/
+
+export function deepEqual(obj1, obj2) {
+  const keysObj1 = Object.keys(obj1);
+  const keysObj2 = Object.keys(obj2);
+
+  if (keysObj1.length !== keysObj2.length) return false;
+    
+  const isObject = keysObj2.filter((i) => keysObj1.includes(i));
+
+  if (isObject.length < keysObj1.length) return false;
+
+  for (const key in obj1) {
+    const val1 = obj1[key];
+    const val2 = obj2[key];
+
+    if (!Object.is(val1, val2) && typeof val1 === "object") {
+      if (!deepEqual(val1, val2)) return false;
+    }
+  }
+  return true;
 }

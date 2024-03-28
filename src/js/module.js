@@ -195,7 +195,7 @@ export function deepEqual(obj1, obj2) {
   const keysObj2 = Object.keys(obj2);
 
   if (keysObj1.length !== keysObj2.length) return false;
-    
+
   const isObject = keysObj2.filter((i) => keysObj1.includes(i));
 
   if (isObject.length < keysObj1.length) return false;

@@ -11,39 +11,37 @@ import { hotels } from "./constants/hotels.js";
 import { obj1, obj2, obj3, obj4 } from "./constants/obj.js";
 /*  import { User} from "./entity/User.js";
 import { Student} from "./entity/Student.js"; */
-import {Students} from "./entity/Students.js"; 
-
+import { Students } from "./entity/Students.js";
 
 const studentsData = [
   {
-    firstName: 'Василий',
-    lastName: 'Петров',
+    firstName: "Василий",
+    lastName: "Петров",
     admissionYear: 2019,
-    courseName: 'Java',
+    courseName: "Java",
   },
   {
-    firstName: 'Иван',
-    lastName: 'Иванов',
+    firstName: "Иван",
+    lastName: "Иванов",
     admissionYear: 2018,
-    courseName: 'JavaScript',
+    courseName: "JavaScript",
   },
   {
-    firstName: 'Александр',
-    lastName: 'Федоров',
+    firstName: "Александр",
+    lastName: "Федоров",
     admissionYear: 2017,
-    courseName: 'Python',
+    courseName: "Python",
   },
   {
-    firstName: 'Николай',
-    lastName: 'Петров',
+    firstName: "Николай",
+    lastName: "Петров",
     admissionYear: 2019,
-    courseName: 'Android',
-  }
+    courseName: "Android",
+  },
 ];
 
 const studentsC = new Students(studentsData);
 console.log(studentsC.getInfo());
-
 
 let user = "John Doe";
 const student = "Sviatlana";

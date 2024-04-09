@@ -1,0 +1,126 @@
+h4 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.destinations {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.destinations .title {
+  text-align: center;
+  margin-bottom: 104px;
+}
+
+.destinations__btn {
+  display: flex;
+  margin-bottom: 64px;
+}
+
+.destinations__btn-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 192px;
+  height: 64px;
+  background-color: var(--stroke-color-main);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.destinations__btn-item:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.destinations__btn-item:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.destinations__btn-item:hover {
+  cursor: pointer;
+  background-color: var(--color-btn);
+  color: var(--general-text-color);
+  border-radius: 8px;
+}
+
+.size {
+  width: 239px;
+}
+
+.active {
+  display: none;
+}
+
+.sing-up {
+  background-color: var(--accent-color);
+  margin-bottom: 120px !important;
+  order: 1;
+  position: relative;
+}
+
+.sing-up__wrapper {
+  display: flex;
+  padding: 52px 24px;
+}
+
+.sing-upp__user {
+  width: 86px;
+  height: 86px;
+  padding-right: 24px;
+}
+
+.sing-upp__logo-rectangle {
+  display: none;
+  height: 58px;
+  width: 58px;
+  padding-left: 16px;
+}
+
+.sing-upp__descr_title {
+  margin-bottom: 21px;
+}
+
+.sing-upp__descr-link {
+  display: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-btn);
+}
+
+.arrow {
+  margin-top: 25%;
+  transform: rotate(90deg);
+}
+
+.destinations .bottom-arrow {
+  display: flex;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.destinations .slider__btn {
+  transform: rotate(90deg);
+  box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn {
+  width: 128px;
+  height: 48px;
+  border: 1px solid var(--color-btn);
+  border-radius: 8px;
+  background-color: var(--general-text-color);
+  color: var(--color-btn);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.cross {
+  display: flex;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  right: 24px;
+  top: 24px;
+  fill: var(--text-color);
+}

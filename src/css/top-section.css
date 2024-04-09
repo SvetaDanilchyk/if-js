@@ -1,0 +1,193 @@
+/* TOP SECTION */
+
+.top-section {
+  min-height: 100vh;
+  background-image: url("./../img/castelmezzano.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  display: flex;
+  padding-top: 51px;
+  justify-content: space-between;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.menu__label {
+  width: 210px;
+  height: 40px;
+}
+
+.header-icon {
+  display: flex;
+  width: 95px;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu__text {
+  text-decoration: none;
+  color: var(--general-text-color);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.menu__text--margin-24 {
+  margin-right: 24px;
+  margin-left: 24px;
+}
+
+.delimiter {
+  position: relative;
+  margin-right: 48px;
+}
+
+.delimiter:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  height: 4px;
+  width: 85%;
+  background-color: var(--accent-color-line);
+  border: none;
+  animation: delim 250ms;
+}
+
+@keyframes delim {
+  0% {
+    top: 80%;
+    opacity: 0;
+  }
+  80% {
+    top: 100%;
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+li {
+  display: flex;
+  justify-content: center;
+}
+
+.menu__btn-night {
+  background-color: inherit;
+  border: 0;
+  cursor: pointer;
+}
+
+.menu__btn-night--size-m {
+  width: 30px;
+  height: 30px;
+}
+
+.menu__icon-acount {
+  width: 40px;
+  height: 40px;
+}
+
+.header__title {
+  color: var(--general-text-color);
+  margin-top: 196px;
+  height: 118px;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.serch-adapt {
+  opacity: 0;
+}
+
+.search {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 124px;
+  height: 64px;
+  border-radius: 8px;
+  background-color: var(--general-text-color);
+}
+
+.search__input {
+  color: var(--text-color-main);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.search__input--width-hotel {
+  width: 467px;
+}
+
+.search__input--width {
+  width: 314px;
+}
+
+.serch--height {
+  height: 64px;
+  border-radius: 8px;
+  border: 3px solid var(--stroke-color-main);
+}
+
+.--yellow {
+  border: 3px solid var(--accent-color-line);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.column > label {
+  color: var(--general-text-color);
+  margin-bottom: 24px;
+  margin-left: 24px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.serch__btn {
+  width: 192px;
+  height: 64px;
+  background-color: var(--color-btn);
+  border: 8px solid var(--color-btn);
+  color: var(--general-text-color);
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.apps {
+  padding: 120px 0;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.apps__google-icon {
+  width: 135px;
+  height: 40px;
+}
+
+.apps__appstore-icon {
+  width: 120px;
+  height: 40px;
+}
+
+.svg-sprite {
+  position: absolute;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}

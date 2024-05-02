@@ -192,7 +192,7 @@ console.log(`Replacement Zero = ${replacementZero(arrZero)}`);
 
 console.log(`sum(5)(2) = ${sum(5)(2)}`);
 
-const colors = ["magenta", "cyan", "firebrick", "springgreen", "skyblue"];
+/* const colors = ["magenta", "cyan", "firebrick", "springgreen", "skyblue"];
 
 const text1 = document.getElementById("text1");
 const text2 = document.getElementById("text2");
@@ -200,7 +200,57 @@ const text3 = document.getElementById("text3");
 
 text1.addEventListener("click", getColor(colors));
 text2.addEventListener("click", getColor(colors));
-text3.addEventListener("click", getColor(colors));
+text3.addEventListener("click", getColor(colors)); */
+
+///lesson-9.
+
+
+
+const colors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  [Symbol('count')]: 0,
+  [Symbol.iterator]() {
+    return this;
+  },
+  next() {
+    debugger;
+      this.current = this.data[this.count];
+     
+    if(this.current !== this.data[this.data.length]) {      
+      return {
+        done: false,
+        value: this.current,
+        count: this.count++
+      };
+    } else {
+      this.count = 0;
+      return {
+        done: false,
+        value: this.current,
+        count: this.count
+      };
+    }
+  }
+};
+const text1 = document.getElementById("text1");
+const text2 = document.getElementById("text2");
+const text3 = document.getElementById("text3");
+
+const changeStyle = id => event => {
+  event.target.style.color = colors.next(id).value;
+};/* 
+text1.addEventListener("click", changeStyle());
+text2.addEventListener("click", changeStyle());
+text3.addEventListener("click", changeStyle());
+ */
+text3.addEventListener("click", changeStyle(colors.next().count));
+text1.addEventListener("click", event => {
+  event.target.style.color = colors.next().value;
+});
+
+text2.addEventListener("click", event => {
+  event.target.style.color = colors.next().value;
+});
 
 // lesson - 5
 

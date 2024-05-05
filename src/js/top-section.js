@@ -1,126 +1,130 @@
-const inputPparameters = document.getElementById('input-param');
-const btmMinus = document.getElementById('btn-minus-adults');
-const addWindow = document.querySelector('.add-input');
+const inputPparameters = document.getElementById("input-param");
+const btmMinus = document.getElementById("btn-minus-adults");
+const addWindow = document.querySelector(".add-input");
 
 let flag = false;
 const quantity = {
-    adults: 0,
-    children: 0,
-    room: 0
+  adults: 0,
+  children: 0,
+  room: 0,
 };
 const printQuantity = () => {
-    inputPparameters.innerHTML  = 
-            `Adults - ${quantity.adults}`
-            +` Children - ${quantity.children}`
-            +` Room - ${quantity.room}`;
-    
-    document.getElementById('amount-adults').textContent = `${quantity.adults}`;
-    document.getElementById('amount-children').textContent = `${quantity.children}`;
-    document.getElementById('amount-room').textContent = `${quantity.room}`;
+  inputPparameters.innerHTML =
+    `Adults - ${quantity.adults}` +
+    ` Children - ${quantity.children}` +
+    ` Room - ${quantity.room}`;
+
+  document.getElementById("amount-adults").textContent = `${quantity.adults}`;
+  document.getElementById("amount-children").textContent =
+    `${quantity.children}`;
+  document.getElementById("amount-room").textContent = `${quantity.room}`;
 };
 
-
-document.querySelector('.jsInput').addEventListener("click", () => {
-    if (!flag){   
-        addWindow.classList.remove('deactive');
-        addWindow.classList.remove('active');
-        flag = true;
-    } else {
-        addWindow.classList.add('active');
-        flag = false;
-    }
+document.querySelector(".jsInput").addEventListener("click", () => {
+  if (!flag) {
+    addWindow.classList.remove("deactive");
+    addWindow.classList.remove("active");
+    flag = true;
+  } else {
+    addWindow.classList.add("active");
+    flag = false;
+  }
 });
 
 function activeBtm(elem) {
-    elem.classList.remove('--deactive-btm-color');
-    elem.classList.add('--active-btm-color');
+  elem.classList.remove("--deactive-btm-color");
+  elem.classList.add("--active-btm-color");
 }
 
 function deactiveBtm(elem) {
-    elem.classList.remove('--active-btm-color');
-    elem.classList.add('--deactive-btm-color');
-} 
+  elem.classList.remove("--active-btm-color");
+  elem.classList.add("--deactive-btm-color");
+}
 
 /* Adults */
-document.getElementById('btn-minus-adults').addEventListener("click", () => {
-    if(quantity.adults != 0) {
-        quantity.adults--;
-    }
-    printQuantity();
-    if(quantity.adults === 0) deactiveBtm(btmMinus); 
-    
-    if(quantity.adults < 30) activeBtm(document.getElementById('btn-plus-adults'));
-});
-document.getElementById('btn-plus-adults').addEventListener("click", () => {
-    if(quantity.adults < 30 && quantity.adults >= 0) {           
-        quantity.adults++;
-        printQuantity();
-        activeBtm(btmMinus);
-    }
+document.getElementById("btn-minus-adults").addEventListener("click", () => {
+  if (quantity.adults != 0) {
+    quantity.adults--;
+  }
+  printQuantity();
+  if (quantity.adults === 0) deactiveBtm(btmMinus);
 
-    if(quantity.adults >= 30) {
-        printQuantity(); 
-        deactiveBtm(document.getElementById('btn-plus-adults'));
-    }
+  if (quantity.adults < 30)
+    activeBtm(document.getElementById("btn-plus-adults"));
+});
+document.getElementById("btn-plus-adults").addEventListener("click", () => {
+  if (quantity.adults < 30 && quantity.adults >= 0) {
+    quantity.adults++;
+    printQuantity();
+    activeBtm(btmMinus);
+  }
+
+  if (quantity.adults >= 30) {
+    printQuantity();
+    deactiveBtm(document.getElementById("btn-plus-adults"));
+  }
 });
 
 /* Children */
-document.getElementById('btn-minus-children').addEventListener("click", () => {
-    
-    if(quantity.children === 0) {
-        printQuantity();         
-    } else {        
-        quantity.children--;
-        printQuantity();
-        document.querySelector('.--select-years').remove();       
-    }
-    if(quantity.children < 1) {
-        printQuantity();         
-        document.querySelector('.add-input__text').classList.add('deactive');
-    }  
+document.getElementById("btn-minus-children").addEventListener("click", () => {
+  if (quantity.children === 0) {
+    printQuantity();
+  } else {
+    quantity.children--;
+    printQuantity();
+    document.querySelector(".--select-years").remove();
+  }
+  if (quantity.children < 1) {
+    printQuantity();
+    document.querySelector(".add-input__text").classList.add("deactive");
+  }
 
-    if(quantity.children === 0) deactiveBtm(document.getElementById('btn-minus-children'));
-    if(quantity.children < 10) activeBtm(document.getElementById('btn-plus-children'));   
+  if (quantity.children === 0)
+    deactiveBtm(document.getElementById("btn-minus-children"));
+  if (quantity.children < 10)
+    activeBtm(document.getElementById("btn-plus-children"));
 });
 
-document.getElementById('btn-plus-children').addEventListener("click", () => {
-    
-    if(quantity.children < 10 && quantity.children >= 0) {     
-        quantity.children++;
-        printQuantity();
-        addSelectYears();
-        activeBtm(document.getElementById('btn-minus-children')); 
-    }
-    if(quantity.children >= 10) deactiveBtm(document.getElementById('btn-plus-children'));
-    if(quantity.children === 1) document.querySelector('.add-input__text').classList.remove('deactive');
+document.getElementById("btn-plus-children").addEventListener("click", () => {
+  if (quantity.children < 10 && quantity.children >= 0) {
+    quantity.children++;
+    printQuantity();
+    addSelectYears();
+    activeBtm(document.getElementById("btn-minus-children"));
+  }
+  if (quantity.children >= 10)
+    deactiveBtm(document.getElementById("btn-plus-children"));
+  if (quantity.children === 1)
+    document.querySelector(".add-input__text").classList.remove("deactive");
 });
 
 /* Room */
-document.getElementById('btn-minus-room').addEventListener("click", () => {
-    if(quantity.room != 0) {             
-        quantity.room--; 
-    }
+document.getElementById("btn-minus-room").addEventListener("click", () => {
+  if (quantity.room != 0) {
+    quantity.room--;
+  }
+  printQuantity();
+
+  if (quantity.room === 0)
+    deactiveBtm(document.getElementById("btn-minus-room"));
+  if (quantity.room < 30) activeBtm(document.getElementById("btn-plus-room"));
+});
+
+document.getElementById("btn-plus-room").addEventListener("click", () => {
+  if (quantity.room < 30 && quantity.room >= 0) {
+    quantity.room++;
     printQuantity();
+    activeBtm(document.getElementById("btn-minus-room"));
+  }
 
-    if(quantity.room === 0) deactiveBtm(document.getElementById('btn-minus-room')); 
-    if(quantity.room < 30) activeBtm(document.getElementById('btn-plus-room'));
+  if (quantity.room >= 30) {
+    printQuantity();
+    deactiveBtm(document.getElementById("btn-plus-room"));
+  }
 });
 
-document.getElementById('btn-plus-room').addEventListener("click", () => {
-    if(quantity.room < 30 && quantity.room >= 0) {
-        quantity.room++;
-        printQuantity();
-        activeBtm(document.getElementById('btn-minus-room'));
-    }
-
-    if(quantity.room >= 30) {
-        printQuantity(); 
-        deactiveBtm(document.getElementById('btn-plus-room'));
-    }
-});
-
-function addSelectYears() {  
-    document.querySelector('.js-wrapper').innerHTML += 
+function addSelectYears() {
+  document.querySelector(".js-wrapper").innerHTML +=
     `<select class="--select-years --text-12" name="select" id="years">
         <option value="0">0 years old</option>
         <option value="1">1 years old</option>

@@ -118,13 +118,12 @@ li {
   background-color: var(--general-text-color);
 }
 
-.search__input {  
+.search__input {
   color: var(--text-color-main);
   text-align: center;
   font-size: 18px;
   font-weight: 400;
 }
-
 
 .search__input--width-hotel {
   width: 467px;
@@ -151,7 +150,6 @@ li {
   border: 3px solid var(--accent-color-line);
 }
 
-
 .column {
   display: flex;
   flex-direction: column;
@@ -168,7 +166,8 @@ li {
 
 .serch__btn {
   width: 192px;
-  height: 64px;cursor: pointer;
+  height: 64px;
+  cursor: pointer;
   background-color: var(--color-btn);
   border: 8px solid var(--color-btn);
   color: var(--general-text-color);
@@ -211,18 +210,19 @@ li {
 .active {
   display: block;
 }
-.add-input {  
+.add-input {
   width: 259px;
-  position: relative;    
+  position: relative;
   padding: 22px;
   background-color: var(--general-text-color);
   border-radius: 8px;
   padding-bottom: 22px;
   top: 12px;
   left: 56px;
+  z-index: 1;
 }
 .add-input__text {
-  padding-top: 12px;  
+  padding-top: 12px;
   font-size: 12px;
 }
 .add-input__item {
@@ -239,7 +239,7 @@ li {
   display: flex;
   align-items: center;
 }
-.wrap-btm__item { 
+.wrap-btm__item {
   cursor: pointer;
   height: 30px;
   width: 30px;
@@ -258,13 +258,13 @@ li {
   margin-top: 12px;
 }
 .--deactive-btm-color {
-  border-color: #CECECE;
-  color: #CECECE;
+  border-color: #cecece;
+  color: #cecece;
 }
 .--active-btm-color {
-  border-color: #3077C6;
-  color: #3077C6
-} 
+  border-color: #3077c6;
+  color: #3077c6;
+}
 .js-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;

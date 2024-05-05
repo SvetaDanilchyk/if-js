@@ -1,10 +1,10 @@
 export class User {
-    constructor(firstName, lastName ){
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
-    get fullName() {
-        return `${this.firstName} ${this.lastName}`;
-    } 
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
 }

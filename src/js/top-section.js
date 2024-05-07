@@ -1,5 +1,5 @@
 const inputPparameters = document.getElementById("input-param");
-const btmMinus = document.getElementById("btn-minus-adults");
+const btnMinus = document.getElementById("btn-minus-adults");
 const addWindow = document.querySelector(".add-input");
 
 let flag = false;
@@ -31,14 +31,14 @@ document.querySelector(".jsInput").addEventListener("click", () => {
   }
 });
 
-function activeBtm(elem) {
-  elem.classList.remove("--deactive-btm-color");
-  elem.classList.add("--active-btm-color");
+function activeBtn(elem) {
+  elem.classList.remove("--deactive-btn-color");
+  elem.classList.add("--active-btn-color");
 }
 
-function deactiveBtm(elem) {
-  elem.classList.remove("--active-btm-color");
-  elem.classList.add("--deactive-btm-color");
+function deactiveBtn(elem) {
+  elem.classList.remove("--active-btn-color");
+  elem.classList.add("--deactive-btn-color");
 }
 
 /* Adults */
@@ -47,21 +47,21 @@ document.getElementById("btn-minus-adults").addEventListener("click", () => {
     quantity.adults--;
   }
   printQuantity();
-  if (quantity.adults === 0) deactiveBtm(btmMinus);
+  if (quantity.adults === 0) deactiveBtn(btnMinus);
 
   if (quantity.adults < 30)
-    activeBtm(document.getElementById("btn-plus-adults"));
+    activeBtn(document.getElementById("btn-plus-adults"));
 });
 document.getElementById("btn-plus-adults").addEventListener("click", () => {
   if (quantity.adults < 30 && quantity.adults >= 0) {
     quantity.adults++;
     printQuantity();
-    activeBtm(btmMinus);
+    activeBtn(btnMinus);
   }
 
   if (quantity.adults >= 30) {
     printQuantity();
-    deactiveBtm(document.getElementById("btn-plus-adults"));
+    deactiveBtn(document.getElementById("btn-plus-adults"));
   }
 });
 
@@ -80,9 +80,9 @@ document.getElementById("btn-minus-children").addEventListener("click", () => {
   }
 
   if (quantity.children === 0)
-    deactiveBtm(document.getElementById("btn-minus-children"));
+    deactiveBtn(document.getElementById("btn-minus-children"));
   if (quantity.children < 10)
-    activeBtm(document.getElementById("btn-plus-children"));
+    activeBtn(document.getElementById("btn-plus-children"));
 });
 
 document.getElementById("btn-plus-children").addEventListener("click", () => {
@@ -90,10 +90,10 @@ document.getElementById("btn-plus-children").addEventListener("click", () => {
     quantity.children++;
     printQuantity();
     addSelectYears();
-    activeBtm(document.getElementById("btn-minus-children"));
+    activeBtn(document.getElementById("btn-minus-children"));
   }
   if (quantity.children >= 10)
-    deactiveBtm(document.getElementById("btn-plus-children"));
+    deactiveBtn(document.getElementById("btn-plus-children"));
   if (quantity.children === 1)
     document.querySelector(".add-input__text").classList.remove("deactive");
 });
@@ -106,20 +106,20 @@ document.getElementById("btn-minus-room").addEventListener("click", () => {
   printQuantity();
 
   if (quantity.room === 0)
-    deactiveBtm(document.getElementById("btn-minus-room"));
-  if (quantity.room < 30) activeBtm(document.getElementById("btn-plus-room"));
+    deactiveBtn(document.getElementById("btn-minus-room"));
+  if (quantity.room < 30) activeBtn(document.getElementById("btn-plus-room"));
 });
 
 document.getElementById("btn-plus-room").addEventListener("click", () => {
   if (quantity.room < 30 && quantity.room >= 0) {
     quantity.room++;
     printQuantity();
-    activeBtm(document.getElementById("btn-minus-room"));
+    activeBtn(document.getElementById("btn-minus-room"));
   }
 
   if (quantity.room >= 30) {
     printQuantity();
-    deactiveBtm(document.getElementById("btn-plus-room"));
+    deactiveBtn(document.getElementById("btn-plus-room"));
   }
 });
 
@@ -146,3 +146,45 @@ function addSelectYears() {
         <option value="17">17 years old</option>
     </select>`;
 }
+
+
+/* search -- lesson-13 */
+
+const btnSearch = document.getElementById("btn-search");
+const searchHomes = document.getElementById("search-homes");
+const sliderSearch = document.getElementById("slider-search");
+let flagSearch = false;
+
+
+function addSearchHomes(data) {
+  for (let i = 0; i < data.length; i++) {
+    sliderSearch.innerHTML += `<div class="slider__item --bottom col-lg-3 col-md-4 col-xs-3 js-slider">
+                                <img class="slider__img col-lg-12" src=${data[i].imageUrl}
+                                <div class="slider__descr">
+                                <div class="slider__descr-header">${data[i].name}</div>
+                                <div class="slider__descr-text">${data[i].city},${data[i].country}</div>
+                                </div>                          
+                                </div>`;
+  }
+}
+
+function clearSearchHomes () {
+  sliderSearch.innerHTML = '';
+}
+
+btnSearch.addEventListener('click', () => {const value = document.getElementById("hotel-name").value;
+clearSearchHomes ();
+fetch(`https://if-student-api.onrender.com/api/hotels?search=${value}`)
+    .then((response) => response.json())
+    .then((data) => {
+
+      if(!flagSearch) {
+        searchHomes.classList.remove("deactive");
+        flagSearch=true;
+      }
+      addSearchHomes(data);
+    });
+  document.getElementById("hotel-name").value = '';
+});
+
+ 

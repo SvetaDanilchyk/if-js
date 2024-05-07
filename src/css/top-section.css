@@ -231,7 +231,7 @@ li {
   font-size: 16px;
   padding-top: 12px;
 }
-.wrap-btm {
+.wrap-btn {
   display: flex;
   align-items: center;
 }
@@ -239,7 +239,7 @@ li {
   display: flex;
   align-items: center;
 }
-.wrap-btm__item {
+.wrap-btn__item {
   cursor: pointer;
   height: 30px;
   width: 30px;
@@ -249,7 +249,7 @@ li {
   font-size: 16px;
   font-weight: 500;
 }
-.wrap-btm__number {
+.wrap-btn__number {
   padding-left: 20px;
   padding-right: 20px;
   max-width: 48px;
@@ -257,11 +257,11 @@ li {
 .--select-years {
   margin-top: 12px;
 }
-.--deactive-btm-color {
+.--deactive-btn-color {
   border-color: #cecece;
   color: #cecece;
 }
-.--active-btm-color {
+.--active-btn-color {
   border-color: #3077c6;
   color: #3077c6;
 }

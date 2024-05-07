@@ -169,7 +169,7 @@
         <form class="search">
           <div class="search__input search__input--width-hotel column">
             <label for="hotel-name">Your destination or hotel name</label>
-            <input class="serch--height" type="text" name="" id="hotel-name" />
+            <input class="serch--height" type="text" name="search" id="hotel-name" />
           </div>
           <div class="column">
             <label for="check-name">Check-in — Check-out</label>
@@ -191,19 +191,19 @@
             <div class="add-input deactive">
               <div class="add-input__item">
                 <span>Adults</span>
-                <div class="wrap-btm">
+                <div class="wrap-btn">
                   <button
                     id="btn-minus-adults"
                     type="button"
-                    class="wrap-btm__item --deactive-btm-color"
+                    class="wrap-btn__item --deactive-btn-color"
                   >
                     -
                   </button>
-                  <div id="amount-adults" class="wrap-btm__number">0</div>
+                  <div id="amount-adults" class="wrap-btn__number">0</div>
                   <button
                     type="button"
                     id="btn-plus-adults"
-                    class="wrap-btm__item --active-btm-color"
+                    class="wrap-btn__item --active-btn-color"
                   >
                     +
                   </button>
@@ -211,19 +211,19 @@
               </div>
               <div class="add-input__item">
                 <span>Children</span>
-                <div class="wrap-btm">
+                <div class="wrap-btn">
                   <button
                     type="button"
                     id="btn-minus-children"
-                    class="wrap-btm__item --deactive-btm-color"
+                    class="wrap-btn__item --deactive-btn-color"
                   >
                     -
                   </button>
-                  <div id="amount-children" class="wrap-btm__number">0</div>
+                  <div id="amount-children" class="wrap-btn__number">0</div>
                   <button
                     type="button"
                     id="btn-plus-children"
-                    class="wrap-btm__item --active-btm-color"
+                    class="wrap-btn__item --active-btn-color"
                   >
                     +
                   </button>
@@ -231,19 +231,19 @@
               </div>
               <div class="add-input__item">
                 <span>Room</span>
-                <div class="wrap-btm">
+                <div class="wrap-btn">
                   <button
                     type="button"
                     id="btn-minus-room"
-                    class="wrap-btm__item --deactive-btm-color"
+                    class="wrap-btn__item --deactive-btn-color"
                   >
                     -
                   </button>
-                  <div id="amount-room" class="wrap-btm__number">0</div>
+                  <div id="amount-room" class="wrap-btn__number">0</div>
                   <button
                     type="button"
                     id="btn-plus-room"
-                    class="wrap-btm__item --active-btm-color"
+                    class="wrap-btn__item --active-btn-color"
                   >
                     +
                   </button>
@@ -257,7 +257,8 @@
             </div>
           </div>
 
-          <button class="serch__btn serch--height gr-xs-4">Serch</button>
+          <button id="btn-search" type="button" class="serch__btn serch--height gr-xs-4">Serch</button>
+          <!-- <button id="btn-search-test" type="button" class="serch__btn serch--height gr-xs-4">Serch Test</button> -->
         </form>
 
         <form class="serch-adapt deactive">
@@ -333,7 +334,7 @@
           </div>
 
           <!-- 4 -->
-          <button class="serch-adapt__btn style-input">Serch</button>
+          <button class="serch-adapt__btn style-input">Saerch</button>
         </form>
 
         <div class="apps">
@@ -347,6 +348,14 @@
               <use href="./src/img/icons/sprite.svg#app-store" />
             </svg>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- house search -->
+    <section id="search-homes" class="homes deactive">
+      <div class="container">
+        <div id="slider-search" class="slider__items slider__items-el">
         </div>
       </div>
     </section>

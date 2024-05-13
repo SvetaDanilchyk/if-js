@@ -1,7 +1,7 @@
 const sliderItems = document.getElementById("slider");
 const homesURL = "https://if-student-api.onrender.com/api/hotels/popular";
 //debugger;
-let  homesArr = [];
+let homesArr = [];
 
 function addElements(element, data) {
   for (let i = 0; i < 4; i++) {
@@ -15,28 +15,25 @@ function addElements(element, data) {
   }
 }
 
-
 function getArrHomes(data) {
   const homes = [];
-  for(let i=0; i < data.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     homes[i] = data[i];
   }
   return homes;
 }
 
-sessionStorage.setItem('urlHomes', homesURL);
+sessionStorage.setItem("urlHomes", homesURL);
 
-if(sessionStorage.getItem('arrHomes') === null) {
-  fetch(sessionStorage.getItem('urlHomes'))
-  .then((respose) => respose.json())
-  .then((data) => {
-    sessionStorage.setItem('arrHomes', JSON.stringify(getArrHomes(data)));
-    homesArr = JSON.parse(sessionStorage.getItem("arrHomes"));
-    addElements(sliderItems, homesArr);
-  });
+if (sessionStorage.getItem("arrHomes") === null) {
+  fetch(sessionStorage.getItem("urlHomes"))
+    .then((respose) => respose.json())
+    .then((data) => {
+      sessionStorage.setItem("arrHomes", JSON.stringify(getArrHomes(data)));
+      homesArr = JSON.parse(sessionStorage.getItem("arrHomes"));
+      addElements(sliderItems, homesArr);
+    });
 } else {
   homesArr = JSON.parse(sessionStorage.getItem("arrHomes"));
   addElements(sliderItems, homesArr);
 }
-
-

@@ -1,0 +1,21 @@
+  .form {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 300px;
+    padding: 25px;
+  }
+
+  .form-el>label {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .form-el>input {
+    display: flex;
+    margin-bottom: 15px;
+  }
+
+  button {
+    height: 30px;
+  }
+  

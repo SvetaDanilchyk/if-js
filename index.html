@@ -132,10 +132,12 @@
 
           <ul class="menu">
             <li class="delimiter">
-              <a class="menu__text" href="#">Stays</a> <!-- active -->
+              <a class="menu__text" href="#">Stays</a>
+              <!-- active -->
             </li>
             <li class="delimiter">
-              <a class="menu__text" href="#">Attractions</a> <!-- active -->
+              <a class="menu__text" href="#">Attractions</a>
+              <!-- active -->
             </li>
             <li class="menu__text--margin-24">
               <button class="menu__btn-night">
@@ -177,18 +179,88 @@
               id="check-name"
             />
           </div>
-          <select
-            class="search__input search__input--width serch--height"
-            name="select"
-          >
-            <option value="aduls">Aduls</option>
-            <option value="children">Children</option>
-            <option value="room">Room</option>
-          </select>
+
+          <div class="popup-window">
+            <div
+              id="input-param"
+              class="search__input search__input--width serch--height border jsInput"
+            >
+              Adults - 0 Children - 0 Room - 0
+            </div>
+
+            <div class="add-input deactive">
+              <div class="add-input__item">
+                <span>Adults</span>
+                <div class="wrap-btm">
+                  <button
+                    id="btn-minus-adults"
+                    type="button"
+                    class="wrap-btm__item --deactive-btm-color"
+                  >
+                    -
+                  </button>
+                  <div id="amount-adults" class="wrap-btm__number">0</div>
+                  <button
+                    type="button"
+                    id="btn-plus-adults"
+                    class="wrap-btm__item --active-btm-color"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div class="add-input__item">
+                <span>Children</span>
+                <div class="wrap-btm">
+                  <button
+                    type="button"
+                    id="btn-minus-children"
+                    class="wrap-btm__item --deactive-btm-color"
+                  >
+                    -
+                  </button>
+                  <div id="amount-children" class="wrap-btm__number">0</div>
+                  <button
+                    type="button"
+                    id="btn-plus-children"
+                    class="wrap-btm__item --active-btm-color"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div class="add-input__item">
+                <span>Room</span>
+                <div class="wrap-btm">
+                  <button
+                    type="button"
+                    id="btn-minus-room"
+                    class="wrap-btm__item --deactive-btm-color"
+                  >
+                    -
+                  </button>
+                  <div id="amount-room" class="wrap-btm__number">0</div>
+                  <button
+                    type="button"
+                    id="btn-plus-room"
+                    class="wrap-btm__item --active-btm-color"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <div class="add-input__text deactive">
+                What is the age of the child you’re travelling with?
+              </div>
+              <div class="js-wrapper"></div>
+            </div>
+          </div>
+
           <button class="serch__btn serch--height gr-xs-4">Serch</button>
         </form>
 
-        <form class="serch-adapt">
+        <form class="serch-adapt deactive">
           <!-- 1 -->
           <div class="hotel-name">
             <img
@@ -320,8 +392,7 @@
       <div class="container">
         <h2 class="title">Homes guests loves</h2>
 
-        <div id="slider" class="slider__items ">
-
+        <div id="slider" class="slider__items">
           <div class="right-arrow">
             <button class="slider__btn">
               <svg
@@ -339,8 +410,6 @@
               </svg>
             </button>
           </div>
-
-
         </div>
       </div>
     </section>
@@ -661,5 +730,6 @@
     </footer>
 
     <script type="module" src="./src/js/homes.js"></script>
+    <script type="module" src="./src/js/top-section.js"></script>
   </body>
 </html>

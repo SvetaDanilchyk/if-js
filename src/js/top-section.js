@@ -147,14 +147,12 @@ function addSelectYears() {
     </select>`;
 }
 
-
 /* search -- lesson-13 */
 
 const btnSearch = document.getElementById("btn-search");
 const searchHomes = document.getElementById("search-homes");
 const sliderSearch = document.getElementById("slider-search");
 let flagSearch = false;
-
 
 function addSearchHomes(data) {
   for (let i = 0; i < data.length; i++) {
@@ -168,23 +166,21 @@ function addSearchHomes(data) {
   }
 }
 
-function clearSearchHomes () {
-  sliderSearch.innerHTML = '';
+function clearSearchHomes() {
+  sliderSearch.innerHTML = "";
 }
 
-btnSearch.addEventListener('click', () => {const value = document.getElementById("hotel-name").value;
-clearSearchHomes ();
-fetch(`https://if-student-api.onrender.com/api/hotels?search=${value}`)
+btnSearch.addEventListener("click", () => {
+  const value = document.getElementById("hotel-name").value;
+  clearSearchHomes();
+  fetch(`https://if-student-api.onrender.com/api/hotels?search=${value}`)
     .then((response) => response.json())
     .then((data) => {
-
-      if(!flagSearch) {
+      if (!flagSearch) {
         searchHomes.classList.remove("deactive");
-        flagSearch=true;
+        flagSearch = true;
       }
       addSearchHomes(data);
     });
-  document.getElementById("hotel-name").value = '';
+  document.getElementById("hotel-name").value = "";
 });
-
- 

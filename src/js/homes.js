@@ -1,6 +1,9 @@
 const sliderItems = document.getElementById("slider");
+const homesURL = "https://if-student-api.onrender.com/api/hotels/popular";
+//debugger;
+let homesArr = [];
 
-function addElements(element,data) {
+function addElements(element, data) {
   for (let i = 0; i < 4; i++) {
     element.innerHTML += `<div id=${data[i].id} class="slider__item col-lg-4 col-md-4 col-xs-3 js-slider">
                               <img class="slider__img col-lg-12" src=${data[i].imageUrl}>
@@ -11,6 +14,26 @@ function addElements(element,data) {
                               </div>`;
   }
 }
-fetch("https://if-student-api.onrender.com/api/hotels/popular")
-  .then((respose) => respose.json())
-  .then((data) => addElements(sliderItems, data));
+
+function getArrHomes(data) {
+  const homes = [];
+  for (let i = 0; i < data.length; i++) {
+    homes[i] = data[i];
+  }
+  return homes;
+}
+
+sessionStorage.setItem("urlHomes", homesURL);
+
+if (sessionStorage.getItem("arrHomes") === null) {
+  fetch(sessionStorage.getItem("urlHomes"))
+    .then((respose) => respose.json())
+    .then((data) => {
+      sessionStorage.setItem("arrHomes", JSON.stringify(getArrHomes(data)));
+      homesArr = JSON.parse(sessionStorage.getItem("arrHomes"));
+      addElements(sliderItems, homesArr);
+    });
+} else {
+  homesArr = JSON.parse(sessionStorage.getItem("arrHomes"));
+  addElements(sliderItems, homesArr);
+}

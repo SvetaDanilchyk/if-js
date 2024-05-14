@@ -1,5 +1,5 @@
 .homes {
-  max-height: 828px;
+ /*  max-height: 828px; */
   padding-top: 120px;
   padding-bottom: 120px;
   background-color: var(--accent-color);
@@ -12,7 +12,8 @@
 
 .slider__items {
   display: flex;
-  justify-content: center;
+  align-items: space-between;
+  justify-content: space-around;
   column-gap: 16px;
   position: relative;
 }
@@ -67,4 +68,12 @@
   color: var(--text-color);
   font-size: 24px;
   font-weight: 400;
+}
+
+.slider__items-el {
+  flex-wrap: wrap;
+}
+
+.--bottom { 
+  margin-bottom: 3rem
 }

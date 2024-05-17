@@ -3,8 +3,6 @@ const form = document.getElementById("form-img");
 const imageBtn = document.getElementById("img-btn");
 const fileEl = document.getElementById("file-img");
 const urlForm = "https://if-student-api.onrender.com/api/file";
-//const body = new FormData(formEl);
-
 /* --------------add jpg-------------- */
 
 const imgEl = document.createElement("img");
@@ -30,6 +28,8 @@ fileEl.addEventListener("change", (event) => {
   reader.readAsDataURL(file);
 });
 /* ----------------------------- */
+
+
 formEl.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -38,10 +38,6 @@ formEl.addEventListener("submit", async (event) => {
     body: new FormData(formEl),
   };
 
-  /*  const value = fetchOptions.body.get('file').name;
- console.log(`https://if-student-api.onrender.com/api/file/${value}`); */
-
-  ///post
   const res = await fetch(urlForm, fetchOptions)
     .then((response) => {
       if (!response.ok) {
@@ -53,31 +49,4 @@ formEl.addEventListener("submit", async (event) => {
     .catch((error) => console.log(error.message));
 
   console.log(res);
-
-  /*  const reader = new FileReader();
-    const data = {};
- */
-
-  // вывод файла-------------------------------------------
-
-  /* const promise = new Promise((resolve) => {
-        reader.addEventListener('load', e => {
-            resolve(e.target.result);
-        });
-    });
-
-   
-    for (const key of fetchOptions.body.keys()) {
-        data[key] = fetchOptions.body.get(key);
-    }
-   // reader.readAsText(data.file);  
-    reader.readAsText(data.file);
-
-    const content = await promise;
-    console.log(content);
-    debugger; */
-
-  // reader.readAsArrayBuffer(data.file);
-  ///вывод файла ---------------------------------
-  /////get
 });

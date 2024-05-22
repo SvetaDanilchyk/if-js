@@ -3,6 +3,7 @@ const form = document.getElementById("form-img");
 const imageBtn = document.getElementById("img-btn");
 const fileEl = document.getElementById("file-img");
 const urlForm = "https://if-student-api.onrender.com/api/file";
+
 /* --------------add jpg-------------- */
 
 const imgEl = document.createElement("img");
@@ -14,8 +15,6 @@ imageBtn.addEventListener("click", () => {
 
 fileEl.addEventListener("change", (event) => {
   const file = event.target.files[0];
-  console.log(file);
-  console.log(file.name);
   const reader = new FileReader();
 
   reader.addEventListener("load", (e) => {
@@ -28,7 +27,6 @@ fileEl.addEventListener("change", (event) => {
   reader.readAsDataURL(file);
 });
 /* ----------------------------- */
-
 
 formEl.addEventListener("submit", async (event) => {
   event.preventDefault();

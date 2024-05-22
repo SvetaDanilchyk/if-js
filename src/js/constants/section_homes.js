@@ -64,3 +64,4 @@ export const data = [
       "https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/the-andaman-resort_d2xksj.jpg",
   },
 ];
+

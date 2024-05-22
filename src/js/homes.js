@@ -15,7 +15,7 @@ function addElements(element, data) {
 }
 
 if (sessionStorage.getItem("arrHomes") === null) {
-  fetch(homesURL)  
+  fetch(homesURL)
     .then((respose) => respose.json())
     .then((data) => {
       sessionStorage.setItem("arrHomes", JSON.stringify(data));

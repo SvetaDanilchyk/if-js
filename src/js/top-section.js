@@ -68,13 +68,11 @@ function addSelectYears() {
 
 /* Adults */
 document.getElementById("btn-minus-adults").addEventListener("click", () => {
-  if (quantity.adults != 0)
-    quantity.adults--;
+  if (quantity.adults != 0) quantity.adults--;
 
   printQuantity();
 
-  if (quantity.adults === 0) 
-    deactiveBtn(btnMinus);
+  if (quantity.adults === 0) deactiveBtn(btnMinus);
 
   if (quantity.adults < 30)
     activeBtn(document.getElementById("btn-plus-adults"));
@@ -92,7 +90,7 @@ document.getElementById("btn-plus-adults").addEventListener("click", () => {
 
 /* Children */
 document.getElementById("btn-minus-children").addEventListener("click", () => {
-   if (quantity.children === 0) {
+  if (quantity.children === 0) {
     printQuantity();
   } else {
     quantity.children--;
@@ -129,8 +127,7 @@ document.getElementById("btn-plus-children").addEventListener("click", () => {
 
 /* Room */
 document.getElementById("btn-minus-room").addEventListener("click", () => {
-  if (quantity.room != 0) 
-    quantity.room--;
+  if (quantity.room != 0) quantity.room--;
 
   printQuantity();
 
@@ -175,20 +172,21 @@ function addSearchHomes(data) {
 function clearSearchHomes() {
   sliderSearch.innerHTML = "";
 }
-async function getHotels (value)  {
-  return fetch(`https://if-student-api.onrender.com/api/hotels?search=${value}`);
+async function getHotels(value) {
+  return fetch(
+    `https://if-student-api.onrender.com/api/hotels?search=${value}`,
+  );
 }
 
-btnSearch.addEventListener('click', async function homesSearch()  {
+btnSearch.addEventListener("click", async function homesSearch() {
   const searchInputValue = searchInput.value;
 
   let hotels = await getHotels(searchInputValue);
   hotels = await hotels.json();
 
-  clearSearchHomes();  
-  searchHomes.classList.remove("deactive");   
+  clearSearchHomes();
+  searchHomes.classList.remove("deactive");
   addSearchHomes(hotels);
 
   document.getElementById("hotel-name").value = "";
-
 });

@@ -190,3 +190,7 @@ btnSearch.addEventListener("click", async function homesSearch() {
 
   document.getElementById("hotel-name").value = "";
 });
+
+
+/* -------lesson-16 */
+

@@ -1,4 +1,4 @@
-import {bubbleSortStr } from "./bubble-sort.js";
+import { bubbleSortStr } from "./bubble-sort.js";
 const sliderItems = document.getElementById("slider");
 const homesURL = "https://if-student-api.onrender.com/api/hotels/popular";
 let homesArr = [];
@@ -16,7 +16,6 @@ function addElements(element, data) {
   }
 }
 
-
 if (sessionStorage.getItem("arrHomes") === null) {
   fetch(homesURL)
     .then((respose) => respose.json())
@@ -31,5 +30,3 @@ if (sessionStorage.getItem("arrHomes") === null) {
   sortHomes = bubbleSortStr(homesArr);
   addElements(sliderItems, sortHomes);
 }
-
-

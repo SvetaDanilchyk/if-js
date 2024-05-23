@@ -14,6 +14,7 @@ function addElements(element, data) {
   }
 }
 
+
 if (sessionStorage.getItem("arrHomes") === null) {
   fetch(homesURL)
     .then((respose) => respose.json())
@@ -26,3 +27,4 @@ if (sessionStorage.getItem("arrHomes") === null) {
   homesArr = JSON.parse(sessionStorage.getItem("arrHomes"));
   addElements(sliderItems, homesArr);
 }
+

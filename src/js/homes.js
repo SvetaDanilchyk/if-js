@@ -1,6 +1,5 @@
 const sliderItems = document.getElementById("slider");
 const homesURL = "https://if-student-api.onrender.com/api/hotels/popular";
-//debugger;
 let homesArr = [];
 
 function addElements(element, data) {
@@ -15,21 +14,12 @@ function addElements(element, data) {
   }
 }
 
-function getArrHomes(data) {
-  const homes = [];
-  for (let i = 0; i < data.length; i++) {
-    homes[i] = data[i];
-  }
-  return homes;
-}
-
-sessionStorage.setItem("urlHomes", homesURL);
 
 if (sessionStorage.getItem("arrHomes") === null) {
-  fetch(sessionStorage.getItem("urlHomes"))
+  fetch(homesURL)
     .then((respose) => respose.json())
     .then((data) => {
-      sessionStorage.setItem("arrHomes", JSON.stringify(getArrHomes(data)));
+      sessionStorage.setItem("arrHomes", JSON.stringify(data));
       homesArr = JSON.parse(sessionStorage.getItem("arrHomes"));
       addElements(sliderItems, homesArr);
     });
@@ -37,3 +27,4 @@ if (sessionStorage.getItem("arrHomes") === null) {
   homesArr = JSON.parse(sessionStorage.getItem("arrHomes"));
   addElements(sliderItems, homesArr);
 }
+

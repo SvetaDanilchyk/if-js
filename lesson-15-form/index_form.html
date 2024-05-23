@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <form id="form" class="form">
+      <div class="form-el">
+        <label for="file">File</label>
+        <input id="file" type="file" name="file" />
+      </div>
+      <button type="submit">Send</button>
+    </form>
+
+    <form id="form-img" class="form-img">
+      <input id="file-img" type="file" hidden />
+      <button id="img-btn" type="button">Click to add your image</button>
+    </form>
+    <script type="module" src="./form.js"></script>
+  </body>
+</html>

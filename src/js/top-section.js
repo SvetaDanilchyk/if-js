@@ -8,6 +8,7 @@ const quantity = {
   children: 0,
   room: 0,
 };
+
 const printQuantity = () => {
   inputPparameters.innerHTML =
     `Adults - ${quantity.adults}` +
@@ -41,88 +42,6 @@ function deactiveBtn(elem) {
   elem.classList.add("--deactive-btn-color");
 }
 
-/* Adults */
-document.getElementById("btn-minus-adults").addEventListener("click", () => {
-  if (quantity.adults != 0) {
-    quantity.adults--;
-  }
-  printQuantity();
-  if (quantity.adults === 0) deactiveBtn(btnMinus);
-
-  if (quantity.adults < 30)
-    activeBtn(document.getElementById("btn-plus-adults"));
-});
-document.getElementById("btn-plus-adults").addEventListener("click", () => {
-  if (quantity.adults < 30 && quantity.adults >= 0) {
-    quantity.adults++;
-    printQuantity();
-    activeBtn(btnMinus);
-  }
-
-  if (quantity.adults >= 30) {
-    printQuantity();
-    deactiveBtn(document.getElementById("btn-plus-adults"));
-  }
-});
-
-/* Children */
-document.getElementById("btn-minus-children").addEventListener("click", () => {
-  if (quantity.children === 0) {
-    printQuantity();
-  } else {
-    quantity.children--;
-    printQuantity();
-    document.querySelector(".--select-years").remove();
-  }
-  if (quantity.children < 1) {
-    printQuantity();
-    document.querySelector(".add-input__text").classList.add("deactive");
-  }
-
-  if (quantity.children === 0)
-    deactiveBtn(document.getElementById("btn-minus-children"));
-  if (quantity.children < 10)
-    activeBtn(document.getElementById("btn-plus-children"));
-});
-
-document.getElementById("btn-plus-children").addEventListener("click", () => {
-  if (quantity.children < 10 && quantity.children >= 0) {
-    quantity.children++;
-    printQuantity();
-    addSelectYears();
-    activeBtn(document.getElementById("btn-minus-children"));
-  }
-  if (quantity.children >= 10)
-    deactiveBtn(document.getElementById("btn-plus-children"));
-  if (quantity.children === 1)
-    document.querySelector(".add-input__text").classList.remove("deactive");
-});
-
-/* Room */
-document.getElementById("btn-minus-room").addEventListener("click", () => {
-  if (quantity.room != 0) {
-    quantity.room--;
-  }
-  printQuantity();
-
-  if (quantity.room === 0)
-    deactiveBtn(document.getElementById("btn-minus-room"));
-  if (quantity.room < 30) activeBtn(document.getElementById("btn-plus-room"));
-});
-
-document.getElementById("btn-plus-room").addEventListener("click", () => {
-  if (quantity.room < 30 && quantity.room >= 0) {
-    quantity.room++;
-    printQuantity();
-    activeBtn(document.getElementById("btn-minus-room"));
-  }
-
-  if (quantity.room >= 30) {
-    printQuantity();
-    deactiveBtn(document.getElementById("btn-plus-room"));
-  }
-});
-
 function addSelectYears() {
   document.querySelector(".js-wrapper").innerHTML +=
     `<select class="--select-years --text-12" name="select" id="years">
@@ -147,12 +66,96 @@ function addSelectYears() {
     </select>`;
 }
 
+/* Adults */
+document.getElementById("btn-minus-adults").addEventListener("click", () => {
+  if (quantity.adults != 0) quantity.adults--;
+
+  printQuantity();
+
+  if (quantity.adults === 0) deactiveBtn(btnMinus);
+
+  if (quantity.adults < 30)
+    activeBtn(document.getElementById("btn-plus-adults"));
+});
+document.getElementById("btn-plus-adults").addEventListener("click", () => {
+  if (quantity.adults < 30 && quantity.adults >= 0) {
+    quantity.adults++;
+    printQuantity();
+    activeBtn(btnMinus);
+  }
+
+  printQuantity();
+  deactiveBtn(document.getElementById("btn-plus-adults"));
+});
+
+/* Children */
+document.getElementById("btn-minus-children").addEventListener("click", () => {
+  if (quantity.children === 0) {
+    printQuantity();
+  } else {
+    quantity.children--;
+    printQuantity();
+    document.querySelector(".--select-years").remove();
+  }
+
+  if (quantity.children < 1) {
+    printQuantity();
+    document.querySelector(".add-input__text").classList.add("deactive");
+  }
+
+  if (quantity.children === 0)
+    deactiveBtn(document.getElementById("btn-minus-children"));
+
+  if (quantity.children < 10)
+    activeBtn(document.getElementById("btn-plus-children"));
+});
+
+document.getElementById("btn-plus-children").addEventListener("click", () => {
+  if (quantity.children < 10 && quantity.children >= 0) {
+    quantity.children++;
+    printQuantity();
+    addSelectYears();
+    activeBtn(document.getElementById("btn-minus-children"));
+  }
+
+  if (quantity.children >= 10)
+    deactiveBtn(document.getElementById("btn-plus-children"));
+
+  if (quantity.children === 1)
+    document.querySelector(".add-input__text").classList.remove("deactive");
+});
+
+/* Room */
+document.getElementById("btn-minus-room").addEventListener("click", () => {
+  if (quantity.room != 0) quantity.room--;
+
+  printQuantity();
+
+  if (quantity.room === 0)
+    deactiveBtn(document.getElementById("btn-minus-room"));
+
+  if (quantity.room < 30) activeBtn(document.getElementById("btn-plus-room"));
+});
+
+document.getElementById("btn-plus-room").addEventListener("click", () => {
+  if (quantity.room < 30 && quantity.room >= 0) {
+    quantity.room++;
+    printQuantity();
+    activeBtn(document.getElementById("btn-minus-room"));
+  }
+
+  if (quantity.room >= 30) {
+    printQuantity();
+    deactiveBtn(document.getElementById("btn-plus-room"));
+  }
+});
+
 /* search -- lesson-13 */
 
 const btnSearch = document.getElementById("btn-search");
 const searchHomes = document.getElementById("search-homes");
 const sliderSearch = document.getElementById("slider-search");
-let flagSearch = false;
+const searchInput = document.getElementById("hotel-name");
 
 function addSearchHomes(data) {
   for (let i = 0; i < data.length; i++) {
@@ -169,18 +172,21 @@ function addSearchHomes(data) {
 function clearSearchHomes() {
   sliderSearch.innerHTML = "";
 }
+async function getHotels(value) {
+  return fetch(
+    `https://if-student-api.onrender.com/api/hotels?search=${value}`,
+  );
+}
 
-btnSearch.addEventListener("click", () => {
-  const value = document.getElementById("hotel-name").value;
+btnSearch.addEventListener("click", async function homesSearch() {
+  const searchInputValue = searchInput.value;
+
+  let hotels = await getHotels(searchInputValue);
+  hotels = await hotels.json();
+
   clearSearchHomes();
-  fetch(`https://if-student-api.onrender.com/api/hotels?search=${value}`)
-    .then((response) => response.json())
-    .then((data) => {
-      if (!flagSearch) {
-        searchHomes.classList.remove("deactive");
-        flagSearch = true;
-      }
-      addSearchHomes(data);
-    });
+  searchHomes.classList.remove("deactive");
+  addSearchHomes(hotels);
+
   document.getElementById("hotel-name").value = "";
 });

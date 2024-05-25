@@ -1,12 +1,31 @@
-const inputPparameters = document.getElementById("input-param");
-const btnMinus = document.getElementById("btn-minus-adults");
-const addWindow = document.querySelector(".add-input");
+import {
+  inputPparameters,
+  addWindow,
+  amountAdults,
+  amountChildren,
+  amountRoom,
+  inputElem,
+  descrforChildren,
+  btnMinusAdults,
+  btnPlusAdults,
+  btnMinusChildren,
+  btnPlusChildren,
+  btnMinusRoom,
+  btnPlusRoom,
+  btnSearch,
+  searchHomes,
+  sliderSearch,
+  searchInput,
+  url,
+} from "./constants/top-section-const.js";
+
+const urlHotels = new URL(url);
 
 let flag = false;
 const quantity = {
-  adults: 0,
+  adults: 1,
   children: 0,
-  room: 0,
+  room: 1,
 };
 
 const printQuantity = () => {
@@ -15,13 +34,12 @@ const printQuantity = () => {
     ` Children - ${quantity.children}` +
     ` Room - ${quantity.room}`;
 
-  document.getElementById("amount-adults").textContent = `${quantity.adults}`;
-  document.getElementById("amount-children").textContent =
-    `${quantity.children}`;
-  document.getElementById("amount-room").textContent = `${quantity.room}`;
+  amountAdults.textContent = `${quantity.adults}`;
+  amountChildren.textContent = `${quantity.children}`;
+  amountRoom.textContent = `${quantity.room}`;
 };
 
-document.querySelector(".jsInput").addEventListener("click", () => {
+inputElem.addEventListener("click", function () {
   if (!flag) {
     addWindow.classList.remove("deactive");
     addWindow.classList.remove("active");
@@ -42,9 +60,24 @@ function deactiveBtn(elem) {
   elem.classList.add("--deactive-btn-color");
 }
 
+function getSelectValue() {
+  const select = document.querySelectorAll(".js--select");
+  let strSelectValue = "";
+
+  select.forEach((element, item) => {
+    if (select.length - 1 === item) {
+      strSelectValue += element.value;
+    } else {
+      strSelectValue += element.value + ",";
+    }
+  });
+
+  return strSelectValue;
+}
+
 function addSelectYears() {
   document.querySelector(".js-wrapper").innerHTML +=
-    `<select class="--select-years --text-12" name="select" id="years">
+    `<select class="--select-years --text-12 js--select" name="select">
         <option value="0">0 years old</option>
         <option value="1">1 years old</option>
         <option value="2">2 years old</option>
@@ -67,29 +100,30 @@ function addSelectYears() {
 }
 
 /* Adults */
-document.getElementById("btn-minus-adults").addEventListener("click", () => {
-  if (quantity.adults != 0) quantity.adults--;
+btnMinusAdults.addEventListener("click", function () {
+  if (quantity.adults != 1) quantity.adults--;
 
   printQuantity();
 
-  if (quantity.adults === 0) deactiveBtn(btnMinus);
+  if (quantity.adults === 1) deactiveBtn(btnMinusAdults);
 
-  if (quantity.adults < 30)
-    activeBtn(document.getElementById("btn-plus-adults"));
+  if (quantity.adults < 30) activeBtn(btnPlusAdults);
 });
-document.getElementById("btn-plus-adults").addEventListener("click", () => {
-  if (quantity.adults < 30 && quantity.adults >= 0) {
+btnPlusAdults.addEventListener("click", function () {
+  if (quantity.adults < 30 && quantity.adults >= 1) {
     quantity.adults++;
     printQuantity();
-    activeBtn(btnMinus);
+    activeBtn(btnMinusAdults);
   }
 
-  printQuantity();
-  deactiveBtn(document.getElementById("btn-plus-adults"));
+  if (quantity.adults >= 30) {
+    printQuantity();
+    deactiveBtn(btnPlusAdults);
+  }
 });
 
 /* Children */
-document.getElementById("btn-minus-children").addEventListener("click", () => {
+btnMinusChildren.addEventListener("click", function () {
   if (quantity.children === 0) {
     printQuantity();
   } else {
@@ -100,63 +134,50 @@ document.getElementById("btn-minus-children").addEventListener("click", () => {
 
   if (quantity.children < 1) {
     printQuantity();
-    document.querySelector(".add-input__text").classList.add("deactive");
+    descrforChildren.classList.add("deactive");
   }
 
-  if (quantity.children === 0)
-    deactiveBtn(document.getElementById("btn-minus-children"));
+  if (quantity.children === 0) deactiveBtn(btnMinusChildren);
 
-  if (quantity.children < 10)
-    activeBtn(document.getElementById("btn-plus-children"));
+  if (quantity.children < 10) activeBtn(btnPlusChildren);
 });
-
-document.getElementById("btn-plus-children").addEventListener("click", () => {
+btnPlusChildren.addEventListener("click", function () {
   if (quantity.children < 10 && quantity.children >= 0) {
     quantity.children++;
     printQuantity();
     addSelectYears();
-    activeBtn(document.getElementById("btn-minus-children"));
+    activeBtn(btnMinusChildren);
   }
 
-  if (quantity.children >= 10)
-    deactiveBtn(document.getElementById("btn-plus-children"));
+  if (quantity.children >= 10) deactiveBtn(btnPlusChildren);
 
-  if (quantity.children === 1)
-    document.querySelector(".add-input__text").classList.remove("deactive");
+  if (quantity.children === 1) descrforChildren.classList.remove("deactive");
 });
 
 /* Room */
-document.getElementById("btn-minus-room").addEventListener("click", () => {
-  if (quantity.room != 0) quantity.room--;
+btnMinusRoom.addEventListener("click", function () {
+  if (quantity.room != 1) quantity.room--;
 
   printQuantity();
 
-  if (quantity.room === 0)
-    deactiveBtn(document.getElementById("btn-minus-room"));
+  if (quantity.room === 1) deactiveBtn(btnMinusRoom);
 
-  if (quantity.room < 30) activeBtn(document.getElementById("btn-plus-room"));
+  if (quantity.room < 30) activeBtn(btnPlusRoom);
 });
-
-document.getElementById("btn-plus-room").addEventListener("click", () => {
-  if (quantity.room < 30 && quantity.room >= 0) {
+btnPlusRoom.addEventListener("click", function () {
+  if (quantity.room < 30 && quantity.room >= 1) {
     quantity.room++;
     printQuantity();
-    activeBtn(document.getElementById("btn-minus-room"));
+    activeBtn(btnMinusRoom);
   }
 
   if (quantity.room >= 30) {
     printQuantity();
-    deactiveBtn(document.getElementById("btn-plus-room"));
+    deactiveBtn(btnPlusRoom);
   }
 });
 
 /* search -- lesson-13 */
-
-const btnSearch = document.getElementById("btn-search");
-const searchHomes = document.getElementById("search-homes");
-const sliderSearch = document.getElementById("slider-search");
-const searchInput = document.getElementById("hotel-name");
-
 function addSearchHomes(data) {
   for (let i = 0; i < data.length; i++) {
     sliderSearch.innerHTML += `<div class="slider__item --bottom col-lg-3 col-md-4 col-xs-3 js-slider">
@@ -172,10 +193,49 @@ function addSearchHomes(data) {
 function clearSearchHomes() {
   sliderSearch.innerHTML = "";
 }
+function clearUrlHotels() {
+  urlHotels.searchParams.delete("search");
+  urlHotels.searchParams.delete("adults");
+  urlHotels.searchParams.delete("children");
+  urlHotels.searchParams.delete("rooms");
+}
+function clearForm() {
+  document.getElementById("hotel-name").value = "";
+
+  quantity.adults = 1;
+  quantity.children = 0;
+  quantity.room = 1;
+  printQuantity();
+  deactiveBtn(btnMinusAdults);
+
+  addWindow.classList.add("deactive");
+  descrforChildren.classList.add("deactive");
+  document
+    .getElementById("btn-minus-children")
+    .classList.remove("--active-btn-color");
+  document
+    .getElementById("btn-minus-children")
+    .classList.add("--deactive-btn-color");
+  document
+    .getElementById("btn-minus-room")
+    .classList.remove("--active-btn-color");
+  document
+    .getElementById("btn-minus-room")
+    .classList.add("--deactive-btn-color");
+
+  document.querySelectorAll(".js--select").forEach((elem) => elem.remove());
+}
 async function getHotels(value) {
-  return fetch(
-    `https://if-student-api.onrender.com/api/hotels?search=${value}`,
-  );
+  urlHotels.searchParams.append("search", value);
+  urlHotels.searchParams.append("adults", quantity.adults);
+  urlHotels.searchParams.set("children", getSelectValue());
+  urlHotels.searchParams.append("rooms", quantity.room);
+
+  let str = urlHotels.toString();
+  str = decodeURIComponent(str);
+  console.log(str);
+  clearUrlHotels();
+  return fetch(str);
 }
 
 btnSearch.addEventListener("click", async function homesSearch() {
@@ -187,8 +247,5 @@ btnSearch.addEventListener("click", async function homesSearch() {
   clearSearchHomes();
   searchHomes.classList.remove("deactive");
   addSearchHomes(hotels);
-
-  document.getElementById("hotel-name").value = "";
+  clearForm();
 });
-
-/* -------lesson-16 */

@@ -1,5 +1,5 @@
-import { hotels } from "./constants/hotels.js";
-import { obj1, obj2, obj3 } from "./constants/obj.js";
+import { hotels } from "../constants/hotels.js";
+import { obj1, obj2, obj3 } from "../constants/obj.js";
 
 // lesson-4
 export function sum(a) {

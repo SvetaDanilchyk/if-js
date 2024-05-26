@@ -6,11 +6,11 @@ import {
   getCalendarMonth,
   deepEqual,
 } from "./module.js";
-import { hotels } from "./constants/hotels.js";
-import { obj1, obj2, obj3, obj4 } from "./constants/obj.js";
+import { hotels } from "../constants/hotels.js";
+import { obj1, obj2, obj3, obj4 } from "../constants/obj.js";
 /*  import { User} from "./entity/User.js";
 import { Student} from "./entity/Student.js"; */
-import { Students } from "./entity/Students.js";
+import { Students } from "../entity/Students.js";
 
 const studentsData = [
   {

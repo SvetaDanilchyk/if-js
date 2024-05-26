@@ -1,4 +1,4 @@
-import { bubbleSortStr } from "./bubble-sort.js";
+import { bubbleSortStr } from "../bubble-sort.js";
 const sliderItems = document.getElementById("slider");
 const homesURL = "https://if-student-api.onrender.com/api/hotels/popular";
 let homesArr = [];

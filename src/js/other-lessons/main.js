@@ -199,9 +199,11 @@ text3.addEventListener("click", getColor(colors)); */
 
 ///lesson-9.
 
-const text1 = document.getElementById("text1");
-const text2 = document.getElementById("text2");
-const text3 = document.getElementById("text3");
+const body = document.querySelector("body");
+
+function getColorNumber (event) {
+  return  event.target.id;
+}
 
 const colors = {
   data: ["magenta", "cyan", "firebrick", "springgreen", "skyblue"],
@@ -237,9 +239,11 @@ const changeStyle = (id) => (event) => {
   event.target.style.color = colors.next(id).value;
 };
 
-text1.addEventListener("click", changeStyle("text1"));
-text2.addEventListener("click", changeStyle("text2"));
-text3.addEventListener("click", changeStyle("text3"));
+body.addEventListener('click', (event) => {
+  const id = getColorNumber(event);
+  changeStyle(id)(event);
+});
+
 // lesson - 5
 
 /* Преобразование формата даты:

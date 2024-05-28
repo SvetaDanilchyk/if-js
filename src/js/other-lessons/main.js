@@ -206,40 +206,40 @@ const text3 = document.getElementById("text3");
 const colors = {
   data: ["magenta", "cyan", "firebrick", "springgreen", "skyblue"],
   text: {},
-    next(id)  {
+  next(id) {
+    if (
+      typeof this.text[id] === "undefined" ||
+      this.text[id] === this.data.length - 1
+    ) {
+      this.text[id] = 0;
+    } else {
+      this.text[id] = this.text[id] + 1;
+    }
 
-      if(typeof this.text[id] === 'undefined' || this.text[id] === this.data.length -1 ) {
-        console.log(this.text[id]);
-        this.text[id] = 0;
-      } else {
-        this.text[id] = (this.text[id] + 1);
-      }
+    this.current = this.data[this.text[id]];
 
-       this.current = this.data[this.text[id]]; 
-
-      if (this.current !== this.data[this.data.length]) {
-        return {
-          done: false,
-          value: this.current,
-          
-        };
-      } else {
-        this.text[id] = 0;
-        return {
-          done: false,
-          value: this.current,
-        };
-      }
-    },
-  };  
-
-const changeStyle = id => event => {
- event.target.style.color = colors.next(id).value;
+    if (this.current !== this.data[this.data.length]) {
+      return {
+        done: false,
+        value: this.current,
+      };
+    } else {
+      this.text[id] = 0;
+      return {
+        done: false,
+        value: this.current,
+      };
+    }
+  },
 };
 
-text1.addEventListener('click', changeStyle('text1'));
-text2.addEventListener('click', changeStyle('text2'));
-text3.addEventListener('click', changeStyle('text3'));
+const changeStyle = (id) => (event) => {
+  event.target.style.color = colors.next(id).value;
+};
+
+text1.addEventListener("click", changeStyle("text1"));
+text2.addEventListener("click", changeStyle("text2"));
+text3.addEventListener("click", changeStyle("text3"));
 // lesson - 5
 
 /* Преобразование формата даты:

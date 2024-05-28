@@ -201,8 +201,8 @@ text3.addEventListener("click", getColor(colors)); */
 
 const body = document.querySelector("body");
 
-function getColorNumber (event) {
-  return  event.target.id;
+function getColorNumber(event) {
+  return event.target.id;
 }
 
 const colors = {
@@ -239,7 +239,7 @@ const changeStyle = (id) => (event) => {
   event.target.style.color = colors.next(id).value;
 };
 
-body.addEventListener('click', (event) => {
+body.addEventListener("click", (event) => {
   const id = getColorNumber(event);
   changeStyle(id)(event);
 });

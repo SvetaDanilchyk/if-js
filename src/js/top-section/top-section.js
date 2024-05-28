@@ -82,7 +82,6 @@ async function getHotels(value) {
 
   let str = urlHotels.toString();
   str = decodeURIComponent(str);
-  console.log(str);
   clearUrlHotels();
   return fetch(str);
 }

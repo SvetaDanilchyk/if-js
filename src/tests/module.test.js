@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 //require("@ngneat/falso"); // from "@ngneat/falso";
-let modulFunction = require("../js/module.js"); //  } from "../js/module.js";
+let modulFunction = require("../js/other-lessons/module.js"); //  } from "../js/module.js";
 
 test("Sum number", () => {
   const number1 = 8;

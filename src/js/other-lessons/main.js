@@ -6,11 +6,11 @@ import {
   getCalendarMonth,
   deepEqual,
 } from "./module.js";
-import { hotels } from "./constants/hotels.js";
-import { obj1, obj2, obj3, obj4 } from "./constants/obj.js";
+import { hotels } from "../constants/hotels.js";
+import { obj1, obj2, obj3, obj4 } from "../constants/obj.js";
 /*  import { User} from "./entity/User.js";
 import { Student} from "./entity/Student.js"; */
-import { Students } from "./entity/Students.js";
+import { Students } from "../entity/Students.js";
 
 const studentsData = [
   {
@@ -191,9 +191,7 @@ console.log(`sum(5)(2) = ${sum(5)(2)}`);
 
 /* const colors = ["magenta", "cyan", "firebrick", "springgreen", "skyblue"];
 
-const text1 = document.getElementById("text1");
-const text2 = document.getElementById("text2");
-const text3 = document.getElementById("text3");
+
 
 text1.addEventListener("click", getColor(colors));
 text2.addEventListener("click", getColor(colors));
@@ -201,49 +199,49 @@ text3.addEventListener("click", getColor(colors)); */
 
 ///lesson-9.
 
+const body = document.querySelector("body");
+
+function getColorNumber(event) {
+  return event.target.id;
+}
+
 const colors = {
   data: ["magenta", "cyan", "firebrick", "springgreen", "skyblue"],
-  [Symbol("count")]: 0,
-  [Symbol.iterator]() {
-    return this;
-  },
-  next() {
-    this.current = this.data[this.count];
+  text: {},
+  next(id) {
+    if (
+      typeof this.text[id] === "undefined" ||
+      this.text[id] === this.data.length - 1
+    ) {
+      this.text[id] = 0;
+    } else {
+      this.text[id] = this.text[id] + 1;
+    }
+
+    this.current = this.data[this.text[id]];
 
     if (this.current !== this.data[this.data.length]) {
       return {
         done: false,
         value: this.current,
-        count: this.count++,
       };
     } else {
-      this.count = 0;
+      this.text[id] = 0;
       return {
         done: false,
         value: this.current,
-        count: this.count,
       };
     }
   },
 };
-const text1 = document.getElementById("text1");
-const text2 = document.getElementById("text2");
-const text3 = document.getElementById("text3");
 
 const changeStyle = (id) => (event) => {
   event.target.style.color = colors.next(id).value;
-}; /* 
-text1.addEventListener("click", changeStyle());
-text2.addEventListener("click", changeStyle());
-text3.addEventListener("click", changeStyle());
- */
-text3.addEventListener("click", changeStyle(colors.next().count));
-text1.addEventListener("click", (event) => {
-  event.target.style.color = colors.next().value;
-});
+};
 
-text2.addEventListener("click", (event) => {
-  event.target.style.color = colors.next().value;
+body.addEventListener("click", (event) => {
+  const id = getColorNumber(event);
+  changeStyle(id)(event);
 });
 
 // lesson - 5
